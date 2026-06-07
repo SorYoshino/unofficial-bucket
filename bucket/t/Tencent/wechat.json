@@ -1,0 +1,41 @@
+{
+    "version": "4.1.10.27",
+    "description": "A free messaging and calling application by Tencent, featuring group chats, multimedia sharing, and more.",
+    "homepage": "https://www.wechat.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.wechat.com/en/service_terms.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cscnk52/wechat-windows-versions/releases/download/v4.1.10.27/weixin_4.1.10.27.exe",
+            "hash": "54203fc2b41983fa106b0af0d67f86befc56ccd3dc1005d4bab6de8ea36b4f74"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-7zipArchive -Path \"$dir\\$fname\" -Switches '-xr!$*' -Removal",
+            "Expand-7zipArchive -Path \"$dir\\install.7z\" -Switches '-xr!unins* -xr!Wetype*' -Removal",
+            "$config_file = \"$env:APPDATA\\Tencent\\xwechat\\config\\51a1fffea11325a1e4104c6b3de47af7.ini\"",
+            "if (-not (Test-Path -Path \"$config_file\" -PathType Leaf)) { New-Item -Path $config_file -ItemType File -Force }",
+            "Set-Content -Path $config_file -Value $persist_dir -NoNewline -Encoding utf8"
+        ]
+    },
+    "shortcuts": [
+        [
+            "Weixin.exe",
+            "WeChat"
+        ]
+    ],
+    "persist": "xwechat_files",
+    "checkver": {
+        "github": "https://github.com/cscnk52/wechat-windows-versions"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cscnk52/wechat-windows-versions/releases/download/v$version/weixin_$version.exe"
+            }
+        }
+    }
+}
