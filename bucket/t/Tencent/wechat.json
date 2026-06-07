@@ -12,15 +12,31 @@
             "hash": "54203fc2b41983fa106b0af0d67f86befc56ccd3dc1005d4bab6de8ea36b4f74"
         }
     },
+    "pre_install": [
+        "ensure \"$persist_dir\\xwechat_files\" | Out-Null",
+        "$config_file = \"$env:APPDATA\\Tencent\\xwechat\\config\\51a1fffea11325a1e4104c6b3de47af7.ini\"",
+        "if (-not (Test-Path -Path \"$config_file\" -PathType Leaf)) {",
+        "    Remove-Item -Path $config_file -Recurse -Force -ErrorAction SilentlyContinue",
+        "    New-Item -Path $config_file -ItemType File -Force | Out-Null",
+        "} else {",
+        "    $data_dir = Get-Content -Path $config_file -Encoding utf8",
+        "    if ($data_dir -eq $persist_dir) { return }",
+        "    if (-not (Test-Path -Path \"$persist_dir\\xwechat_files\\*\") -and `",
+        "            $null -ne $data_dir -and (Test-Path -Path \"$data_dir\\xwechat_files\\*\")) {",
+        "        Write-Host \"`nINFO  Migrating WeChat data to '$persist_dir\\xwechat_files'...\" -ForegroundColor DarkGray",
+        "        Copy-Item -Path \"$data_dir\\xwechat_files\\*\" -Destination \"$persist_dir\\xwechat_files\" -Force -Recurse",
+        "        Remove-Item -Path \"$data_dir\\xwechat_files\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "    }",
+        "}",
+        "Set-Content -Path $config_file -Value $persist_dir -NoNewline -Encoding utf8"
+    ],
     "installer": {
         "script": [
             "Expand-7zipArchive -Path \"$dir\\$fname\" -Switches '-xr!$*' -Removal",
-            "Expand-7zipArchive -Path \"$dir\\install.7z\" -Switches '-xr!unins* -xr!Wetype*' -Removal",
-            "$config_file = \"$env:APPDATA\\Tencent\\xwechat\\config\\51a1fffea11325a1e4104c6b3de47af7.ini\"",
-            "if (-not (Test-Path -Path \"$config_file\" -PathType Leaf)) { New-Item -Path $config_file -ItemType File -Force }",
-            "Set-Content -Path $config_file -Value $persist_dir -NoNewline -Encoding utf8"
+            "Expand-7zipArchive -Path \"$dir\\install.7z\" -Switches '-xr!unins* -xr!Wetype*' -Removal"
         ]
     },
+    "bin": "Weixin.exe",
     "shortcuts": [
         [
             "Weixin.exe",
