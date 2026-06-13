@@ -1,5 +1,5 @@
 {
-    "version": "3.5.3-85",
+    "version": "3.5.3-8.5",
     "description": "A PHP extension designed to facilitate professional debugging and development workflows (Non Thread Safe).",
     "homepage": "https://xdebug.org",
     "license": {
@@ -47,9 +47,9 @@
             "        PHPVersion = [version]$_.Groups['suffix'].Value",
             "    }",
             "} | Sort-Object -Property XdebugVersion, PHPVersion -Descending | Select-Object -First 1",
-            "$version_prefix = $latest_xdebug.XdebugVersion.ToString()",
-            "$version_suffix = $latest_xdebug.PHPVersion.ToString().Split('.')[0..1] -join ''",
-            "Write-Output \"$version_prefix-$version_suffix / $($latest_xdebug.FileName)\""
+            "$php_version = $latest_xdebug.PHPVersion.ToString()",
+            "$xdebug_version = $latest_xdebug.XdebugVersion.ToString()",
+            "Write-Output \"$xdebug_version-$php_version / $($latest_xdebug.FileName)\""
         ],
         "regex": "([\\d.-]+) / (?<name>.+)"
     },
