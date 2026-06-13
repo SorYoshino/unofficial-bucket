@@ -9,15 +9,15 @@
     "architecture": {
         "64bit": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
-            "hash": "e45ce0b3fd6d0457e253f132ef086c6c4715def16e59433de2cb5dfe2c16a76f"
+            "hash": "45345826bb1db5ab76e88b10353850b167768b7a8b527fdf2b1ca309fbc450b4"
         },
         "32bit": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
-            "hash": "e45ce0b3fd6d0457e253f132ef086c6c4715def16e59433de2cb5dfe2c16a76f"
+            "hash": "45345826bb1db5ab76e88b10353850b167768b7a8b527fdf2b1ca309fbc450b4"
         },
         "arm64": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite-ARM64.zip",
-            "hash": "3bc66ca68035cf65d0efb31aa088abd6ad318c955b9af3ca654b99cad52e0a4c"
+            "hash": "59461cec38f20bd936822b04280ea1b2213a055bd756130cadf01127786df0aa"
         }
     },
     "pre_install": [
