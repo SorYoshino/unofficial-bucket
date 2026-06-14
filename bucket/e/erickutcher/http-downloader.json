@@ -33,16 +33,17 @@
         "http_downloader_settings"
     ],
     "checkver": {
-        "github": "https://github.com/erickutcher/httpdownloader",
-        "regex": "(?i)tag/v([\\d.]+)(?=\")"
+        "github": "https://api.github.com/repos/erickutcher/httpdownloader/releases",
+        "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.browser_download_url =~ /HTTP_Downloader/i)])].tag_name",
+        "regex": "(?<=\")(?<tag>v?([\\d.]+))(?=\")"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_64.zip"
+                "url": "https://github.com/erickutcher/httpdownloader/releases/download/$matchTag/HTTP_Downloader_64.zip"
             },
             "32bit": {
-                "url": "https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_32.zip"
+                "url": "https://github.com/erickutcher/httpdownloader/releases/download/$matchTag/HTTP_Downloader_32.zip"
             }
         }
     }
