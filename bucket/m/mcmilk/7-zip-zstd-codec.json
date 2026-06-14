@@ -1,5 +1,5 @@
 {
-    "version": "25.01-1.5.7-r4",
+    "version": "26.01-1.5.7-r1",
     "description": "A plugin for 7-Zip installations that adds support for modern compression codecs, including Zstandard, Brotli, LZ4, LZ5, Lizard, and Fast-LZMA2.",
     "homepage": "https://github.com/mcmilk/7-Zip-zstd",
     "license": {
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/Codecs-x64.7z",
-            "hash": "35d1cda34f51f52a2e9a6736f7568bc60ec73c04d6c01f8d566f5cc05b229f31"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-x64.7z",
+            "hash": "d2fb80267777a41b1843d5663353e55a5caf4761c7a8bd0bc5d4771fac0ce835"
         },
         "32bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/Codecs-x32.7z",
-            "hash": "bdc8d90f366267896d09bfb15e81ec461c6eb62943d4d680b9b43acda6b2f387"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-x86.7z",
+            "hash": "e56f079f64c6a02682f951b2904f03527f49ca2848dc437638f16f7e0807069d"
         },
         "arm64": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/Codecs-arm64.7z",
-            "hash": "ac61f20c5edd883f90485456bbdb4a32855fff30572e3b27c675ab10189c3b08"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-arm64.7z",
+            "hash": "7fab1c8ac0e1caf9b7b440c1b540ea8c9676d2c4470dcb9194a215a7331b579b"
         }
     },
     "installer": {
@@ -54,7 +54,7 @@
                 "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x64.7z"
             },
             "32bit": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x32.7z"
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x86.7z"
             },
             "arm64": {
                 "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-arm64.7z"
