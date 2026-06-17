@@ -1,0 +1,53 @@
+{
+    "version": "1.0",
+    "description": "A 7-Zip plugin that adds support for opening and extracting KSIZIP archives used by Native Install for KeySoft system components and updates on legacy BrailleNote/VoiceNote devices.",
+    "homepage": "https://www.tc4shell.com/en/7zip/ksizip7z/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.tc4shell.com/en/termsofuse/"
+    },
+    "url": "https://www.tc4shell.com/binary/KsiZip7z.zip",
+    "hash": "2ab5bffc4ec7058c867b91dfcac670fe25c8351a6bda9d9ea6cbb4ab528a2eb1",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Get-ChildItem -Path $dir -Include '*32*' -Recurse -File | Remove-Item -Force -ErrorAction SilentlyContinue",
+                "Get-ChildItem -Path $dir -Include '*64*' -Recurse -File | Rename-Item -NewName { $_.Name -replace '\\d{2}\\.(?=dll)', '' } -Force"
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Get-ChildItem -Path $dir -Include '*64*' -Recurse -File | Remove-Item -Force -ErrorAction SilentlyContinue",
+                "Get-ChildItem -Path $dir -Include '*32*' -Recurse -File | Rename-Item -NewName { $_.Name -replace '\\.\\d{2}\\.(?=dll)', '' } -Force"
+            ]
+        }
+    },
+    "installer": {
+        "script": [
+            "$7z_path = Get-CommandPath -Command '7z.exe'",
+            "if ([string]::IsNullOrWhiteSpace($7z_path)) {",
+            "    abort \"`n[ERROR]  Could not locate '7z.exe' in system PATH. Installation terminated.\"",
+            "}",
+            "$formats_dir = Join-Path -Path $(Split-Path -Path $7z_path -Parent) -ChildPath 'Formats'",
+            "if (-not (Test-Path -Path $formats_dir -PathType Container)) {",
+            "    New-Item -Path $formats_dir -ItemType Directory -Force | Out-Null",
+            "}",
+            "Copy-Item -Path \"$dir\\*\" -Destination $formats_dir -Exclude '*.json', 'ReadMe.txt' -Force -Recurse"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$7z_path = Get-CommandPath -Command '7z.exe'",
+            "if (-not [string]::IsNullOrWhiteSpace($7z_path)) {",
+            "    $formats_dir = Join-Path -Path $(Split-Path -Path $7z_path -Parent) -ChildPath 'Formats'",
+            "    Get-ChildItem -Path $dir -Exclude '*.json', 'ReadMe.txt' | ForEach-Object -Process {",
+            "        Remove-Item -Path \"$formats_dir\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "    }",
+            "}"
+        ]
+    },
+    "checkver": "Plugin version:\\s*([\\d.]+)",
+    "autoupdate": {
+        "url": "https://www.tc4shell.com/binary/KsiZip7z.zip"
+    }
+}
