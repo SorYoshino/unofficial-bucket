@@ -45,7 +45,7 @@
     ],
     "persist": "xwechat_files",
     "checkver": {
-        "github": "https://github.com/cscnk52/wechat-windows-versions"
+        "github": "https://api.github.com/repos/cscnk52/wechat-windows-versions/releases/latest"
     },
     "autoupdate": {
         "architecture": {

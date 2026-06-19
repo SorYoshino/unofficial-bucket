@@ -30,7 +30,7 @@
     ],
     "persist": "settings",
     "checkver": {
-        "github": "https://github.com/deskflow/deskflow"
+        "github": "https://api.github.com/repos/deskflow/deskflow/releases/latest"
     },
     "autoupdate": {
         "architecture": {

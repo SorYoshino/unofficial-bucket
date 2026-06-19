@@ -20,8 +20,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/Taiko2k/Tauon/releases",
-        "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.name =~ /windows/i)])].tag_name",
-        "regex": "(?<=\")(?<tag>v?([\\d.]+))(?=\")"
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /windows\\.7z$/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>v?([\\d.]+))/TauonMusicBox"
     },
     "autoupdate": {
         "architecture": {

@@ -1,7 +1,7 @@
 {
     "version": "4.4.2",
     "description": "A Windows tool that allows you to preview files quickly by pressing the Space key.",
-    "homepage": "https://1218.io/seer",
+    "homepage": "https://1218.io/seer/",
     "license": {
         "identifier": "Proprietary",
         "url": "https://1218.io/seer/eula.txt"
@@ -22,7 +22,7 @@
     ],
     "persist": "data",
     "checkver": {
-        "github": "https://github.com/ccseer/Seer"
+        "github": "https://api.github.com/repos/ccseer/Seer/releases/latest"
     },
     "autoupdate": {
         "architecture": {

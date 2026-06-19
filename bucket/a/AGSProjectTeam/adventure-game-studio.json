@@ -24,7 +24,7 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/adventuregamestudio/ags/releases/latest",
-        "jsonpath": "$.assets[?(@.name =~ /AGS.+exe/i)].browser_download_url",
+        "jsonpath": "$.assets[?(@.name =~ /AGS.+exe$/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>v?([\\d.]+))/(?<name>[^\"]+)"
     },
     "autoupdate": {

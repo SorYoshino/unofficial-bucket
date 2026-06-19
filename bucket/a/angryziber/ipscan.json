@@ -28,7 +28,7 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/angryip/ipscan"
+        "github": "https://api.github.com/repos/angryip/ipscan/releases/latest"
     },
     "autoupdate": {
         "architecture": {

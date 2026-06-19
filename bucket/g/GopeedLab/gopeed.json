@@ -24,7 +24,7 @@
     ],
     "persist": "storage",
     "checkver": {
-        "github": "https://github.com/GopeedLab/gopeed"
+        "github": "https://api.github.com/repos/GopeedLab/gopeed/releases/latest"
     },
     "autoupdate": {
         "architecture": {

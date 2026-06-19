@@ -52,7 +52,7 @@
         ]
     },
     "checkver": {
-        "github": "https://github.com/eythaann/Seelen-UI"
+        "github": "https://api.github.com/repos/eythaann/Seelen-UI/releases/latest"
     },
     "autoupdate": {
         "architecture": {

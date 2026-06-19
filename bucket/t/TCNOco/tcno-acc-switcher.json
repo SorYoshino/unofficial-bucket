@@ -28,7 +28,7 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/TcNobo/TcNo-Acc-Switcher/releases/latest",
-        "jsonpath": "$.assets[?(@.name =~ /(?<!CEF[^\"]*)\\.7z/i)].browser_download_url",
+        "jsonpath": "$.assets[?(@.name =~ /(?<!CEF[^\"]*)\\.7z$/i)].browser_download_url",
         "regex": "(?i)download/([\\d._-]+)/(?<name>[^\"]+)"
     },
     "autoupdate": {

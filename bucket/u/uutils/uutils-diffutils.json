@@ -38,7 +38,7 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/uutils/diffutils"
+        "github": "https://api.github.com/repos/uutils/diffutils/releases/latest"
     },
     "autoupdate": {
         "architecture": {
