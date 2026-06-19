@@ -32,20 +32,7 @@
         ]
     ],
     "checkver": {
-        "script": [
-            "if ($PSVersionTable.PSVersion -lt [version]::new(7, 0)) { Add-Type -AssemblyName System.Net.Http }",
-            "$params = [ordered]@{ channel = 'development'; platform = 'win'; arch = 'arm64' }",
-            "$base_url = 'https://discord.com/api/downloads/distributions/app/installers/latest'",
-            "$query_string = ($params.Keys | ForEach-Object -Process { \"$_=$($params[$_])\" }) -join '&'",
-            "$download_url = $base_url + '?' + $query_string",
-            "$http_handler = New-Object -TypeName System.Net.Http.HttpClientHandler",
-            "$http_handler.AllowAutoRedirect = $true",
-            "$client = [System.Net.Http.HttpClient]::new($http_handler)",
-            "$request = New-Object -TypeName System.Net.Http.HttpRequestMessage -ArgumentList 'HEAD', $download_url",
-            "$response = $client.SendAsync($request).Result",
-            "Write-Output $response.RequestMessage.RequestUri.AbsoluteUri",
-            "$response, $request, $client, $http_handler | Where-Object -FilterScript { $_ } | ForEach-Object -Process { $_.Dispose() }"
-        ],
+        "url": "https://updates.discord.com/distributions/app/manifests/latest?channel=development&platform=win&arch=arm64",
         "regex": "arm64/([\\d.]+)"
     },
     "autoupdate": {
