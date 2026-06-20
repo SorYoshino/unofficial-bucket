@@ -1,0 +1,43 @@
+# Configuration for Dependabot version updates
+# Documentation: https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+
+    # Schedule: Run at 15:30 on the 7th and 22nd of each month
+    schedule:
+      interval: "cron"
+      cronjob: "30 15 7,22 * *"
+
+    # Cooldown: Wait 5 days after a new version is released to ensure stability
+    cooldown:
+      default-days: 5
+
+    # Commit message format: e.g., "(chore): bump actions/checkout..."
+    commit-message:
+      prefix: "(chore)"
+
+    # Labels: Used for filtering and managing automated PRs in GitHub
+    labels:
+      - "dependabot-automated"
+      - "dependencies"
+
+    # Grouping strategy: Consolidate updates to reduce PR noise
+    groups:
+      # 1. Security updates: Immediate priority to fix vulnerabilities
+      security-patches:
+        applies-to: "security-updates"
+        patterns:
+          - "*"
+
+      # 2. Version updates: Bundle minor and patch releases together
+      minor-and-patch:
+        applies-to: "version-updates"
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "*"
