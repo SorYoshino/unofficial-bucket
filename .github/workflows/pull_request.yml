@@ -19,5 +19,6 @@ jobs:
       - name: PullRequestHandler
         uses: ScoopInstaller/GithubActions@main
         env:
+          SCOOP_REPO: https://github.com/SorYoshino/Scoop
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SCOOP_BRANCH: develop
+          SCOOP_BRANCH: unofficial
