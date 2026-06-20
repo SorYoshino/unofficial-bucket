@@ -1,0 +1,34 @@
+{
+    "version": "5.7.0-beta01",
+    "description": "An all-in-one anime platform for discovering, tracking, and watching anime, featuring danmaku, cloud sync, and more, with potentially unstable features.",
+    "homepage": "https://animeko.org",
+    "license": {
+        "identifier": "AGPL-3.0-only",
+        "url": "https://github.com/open-ani/animeko/blob/HEAD/LICENSE.txt"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/open-ani/animeko/releases/download/v5.7.0-beta01/ani-5.7.0-beta01-windows-x86_64.zip",
+            "hash": "39f25d6d50411622fa25ba64dc250289c0f85df75904e50d6ad3f70f4123aff2"
+        }
+    },
+    "extract_dir": "Ani",
+    "shortcuts": [
+        [
+            "Ani.exe",
+            "Animeko"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/open-ani/animeko/releases",
+        "jsonpath": "$[?(@.prerelease == true)].assets[?(@.name =~ /windows/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/ani-([\\w.-]+)-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/open-ani/animeko/releases/download/$matchTag/ani-$version-windows-x86_64.zip"
+            }
+        }
+    }
+}
