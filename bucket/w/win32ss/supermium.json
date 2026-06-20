@@ -16,17 +16,20 @@
             "hash": "01d8763b066f1b27f5f528b384b8a678ab557181b7e1fd17b7ad1e29df8c07df"
         }
     },
+    "pre_install": [
+        "ensure \"$persist_dir\\User Data\" | Out-Null",
+        "$original_data_dir = \"$env:LocalAppData\\Supermium\\User Data\"",
+        "if (-not (Test-Path -Path \"$persist_dir\\User Data\\*\") -and (Test-Path -Path \"$original_data_dir\\*\")) {",
+        "    Write-Host \"`nINFO  Migrating user data to '$persist_dir\\User Data'...\" -ForegroundColor DarkGray",
+        "    Copy-Item -Path \"$original_data_dir\\*\" -Destination \"$persist_dir\\User Data\" -Force -Recurse",
+        "}",
+        "Remove-Item -Path \"$env:LocalAppData\\Supermium\" -Recurse -Force -ErrorAction SilentlyContinue"
+    ],
     "installer": {
-        "script": [
-            "ensure \"$persist_dir\\User Data\" | Out-Null",
-            "$original_data_dir = \"$env:LocalAppData\\Supermium\\User Data\"",
-            "Expand-7zipArchive -Path \"$dir\\$fname\" -ExtractDir 'Supermium' -Switches '-xr!$* -xr!unins*' -Removal",
-            "if (-not (Test-Path -Path \"$persist_dir\\User Data\\*\") -and (Test-Path -Path \"$original_data_dir\\*\")) {",
-            "    Write-Host \"`nINFO  Migrating user data to '$persist_dir\\User Data'...\" -ForegroundColor DarkGray",
-            "    Copy-Item -Path \"$original_data_dir\\*\" -Destination \"$persist_dir\\User Data\" -Force -Recurse",
-            "}",
-            "Remove-Item -Path \"$env:LocalAppData\\Supermium\" -Recurse -Force -ErrorAction SilentlyContinue"
-        ]
+        "script": "Expand-7zipArchive -Path \"$dir\\$fname\" -ExtractDir 'Supermium' -Switches '-xr!$* -xr!unins*' -Removal"
+    },
+    "env_set": {
+        "CHROME_EXECUTABLE": "$dir\\chrome.exe"
     },
     "bin": [
         [
