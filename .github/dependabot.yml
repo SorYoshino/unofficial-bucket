@@ -22,8 +22,8 @@ updates:
 
     # Labels: Used for filtering and managing automated PRs in GitHub
     labels:
-      - "dependabot-automated"
       - "dependencies"
+      - "dependabot-automated"
 
     # Grouping strategy: Consolidate updates to reduce PR noise
     groups:
@@ -34,7 +34,7 @@ updates:
           - "*"
 
       # 2. Version updates: Bundle minor and patch releases together
-      minor-and-patch:
+      non-breaking-updates:
         applies-to: "version-updates"
         update-types:
           - "patch"

@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ 'main', 'master' ]
+    branches:
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -15,23 +16,26 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        shell: [ powershell, pwsh ]
+        shell:
+          - pwsh
+          - powershell
     defaults:
       run:
         shell: ${{ matrix.shell }}
     steps:
       - name: Checkout Bucket
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 2
-          path: 'my_bucket'
+          path: my_bucket
       - name: Checkout Scoop
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
-          repository: ScoopInstaller/Scoop
-          path: 'scoop_core'
+          repository: SorYoshino/Scoop
+          ref: unofficial
+          path: scoop_core
       - name: Install and cache test dependencies
-        uses: potatoqualitee/psmodulecache@v6.3
+        uses: potatoqualitee/psmodulecache@9e4b63833c22c1768d648e115a9c849afdda22a5 # v6.3
         with:
           modules-to-cache: BuildHelpers, Pester
           shell: ${{ matrix.shell }}
