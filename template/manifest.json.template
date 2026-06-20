@@ -1,0 +1,178 @@
+{
+    "##": [
+        "This file regulates the specific ordering of fields and demonstrates the usage of basic properties.",
+        "",
+        "Usage Guidelines:",
+        "- First, retain or remove fields based on the application requirements.",
+        "- Next, fill in the blanks or provide the relevant content as directed by the placeholders.",
+        "- Finally, adjust the field structures dynamically according to actual conditions:",
+        "  * Fields defined with arrays can alternatively accept a single string if only one value exists.",
+        "  * Fields strictly designated as strings, booleans, or objects must adhere to their respective data types."
+    ],
+    "version": "",
+    "description": "",
+    "homepage": "",
+    "license": {
+        "identifier": "",
+        "url": ""
+    },
+    "notes": [
+        "",
+        ""
+    ],
+    "depends": [
+        "<bucket_name>/<manifest_name>",
+        "<bucket_name>/<manifest_name>"
+    ],
+    "suggest": {
+        "<feature_name>": [
+            "<bucket_name>/<manifest_name>",
+            "<bucket_name>/<manifest_name>"
+        ],
+        "<app_name>": "<bucket_name>/<manifest_name>"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "",
+                ""
+            ],
+            "hash": [
+                "",
+                ""
+            ]
+        },
+        "32bit": {
+            "url": [
+                "",
+                ""
+            ],
+            "hash": [
+                "",
+                ""
+            ]
+        },
+        "arm64": {
+            "url": [
+                "",
+                ""
+            ],
+            "hash": [
+                "",
+                ""
+            ]
+        }
+    },
+    "innosetup": true,
+    "extract_dir": [
+        "",
+        ""
+    ],
+    "extract_to": [
+        "",
+        ""
+    ],
+    "pre_install": [
+        "",
+        ""
+    ],
+    "installer": {
+        "script": [
+            "",
+            ""
+        ]
+    },
+    "post_install": [
+        "",
+        ""
+    ],
+    "env_add_path": [
+        "",
+        ""
+    ],
+    "env_set": {
+        "<environment_variable_name>": "<variable_value_1>;<variable_value_2>;"
+    },
+    "psmodule": {
+        "name": "<module_name>"
+    },
+    "bin": [
+        [
+            "<program_dir> - required",
+            "<alias> - required",
+            "<arguments> - optional"
+        ],
+        "<program_dir>"
+    ],
+    "shortcuts": [
+        [
+            "<program_dir> - required",
+            "<apps_sub_dir>\\<app_shortcut_name> - required",
+            "<start_parameters> - optional",
+            "<icon_file_dir> - optional"
+        ]
+    ],
+    "persist": [
+        "<item_name>",
+        [
+            "<item_original_name>",
+            "<new_name_inside_persist_dir>"
+        ]
+    ],
+    "pre_uninstall": [
+        "",
+        ""
+    ],
+    "uninstaller": {
+        "script": [
+            "",
+            ""
+        ]
+    },
+    "post_uninstall": [
+        "",
+        ""
+    ],
+    "checkver": {
+        "url": "",
+        "useragent": "",
+        "script": [
+            "",
+            ""
+        ],
+        "jsonpath": "",
+        "xpath": "",
+        "regex": "",
+        "reverse": true,
+        "replace": ""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "",
+                    ""
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "",
+                    ""
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "",
+                    ""
+                ]
+            }
+        },
+        "hash": {
+            "mode": "",
+            "url": "",
+            "regex": "",
+            "jsonpath": "",
+            "xpath": ""
+        }
+    }
+}
