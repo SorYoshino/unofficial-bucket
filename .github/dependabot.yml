@@ -7,16 +7,16 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
 
-    # Schedule: Run at 15:30 on the 7th and 22nd of each month
+    # Schedule: Run at 15:27 every Sunday (UTC)
     schedule:
       interval: "cron"
-      cronjob: "30 15 7,22 * *"
+      cronjob: "27 15 * * 0"
 
-    # Cooldown: Wait 5 days after a new version is released to ensure stability
+    # Cooldown: Wait 3 days after a new version is released to ensure stability
     cooldown:
-      default-days: 5
+      default-days: 3
 
-    # Commit message format: e.g., "(chore): bump actions/checkout..."
+    # Commit message format: e.g., "(chore): Bump actions/checkout..."
     commit-message:
       prefix: "(chore)"
 
@@ -37,7 +37,7 @@ updates:
       non-breaking-updates:
         applies-to: "version-updates"
         update-types:
-          - "patch"
           - "minor"
+          - "patch"
         patterns:
           - "*"
