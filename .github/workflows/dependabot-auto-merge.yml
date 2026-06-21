@@ -1,4 +1,4 @@
-name: "Dependabot Auto-Merge (Non-Major & Security)"
+name: Dependabot Auto-Merge
 
 on:
   pull_request_target:
@@ -24,9 +24,9 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
         with:
-          alert-lookup: true # Checks if this dependency has known security vulnerabilities
-          compat-lookup: true # Fetches the ecosystem compatibility score from GitHub big data
           github-token: ${{ secrets.DEPENDABOT_PAT }} # Requires a PAT to query security advisories
+          compat-lookup: true # Fetches the ecosystem compatibility score from GitHub big data
+          alert-lookup: true # Checks if this dependency has known security vulnerabilities
 
       - name: Check Merge Eligibility
         id: check
@@ -65,5 +65,5 @@ jobs:
           # '--squash' combines all commits in the PR into a single commit on master.
           gh pr merge --auto --squash "$PR_URL"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
