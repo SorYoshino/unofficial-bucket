@@ -1,0 +1,28 @@
+{
+    "version": "4.14",
+    "description": "A command-line application for discovering and watching anime, with support for shared viewing sessions.",
+    "homepage": "https://github.com/pystardust/ani-cli",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/pystardust/ani-cli/blob/HEAD/LICENSE"
+    },
+    "suggest": {
+        "User interface": "main/fzf",
+        "Stream Downloader": [
+            "main/yt-dlp",
+            "main/ffmpeg"
+        ],
+        "Media Player": [
+            "extras/mpv",
+            "extras/vlc"
+        ],
+        "Download manager": "main/aria2"
+    },
+    "url": "https://raw.githubusercontent.com/pystardust/ani-cli/refs/tags/v4.14/ani-cli",
+    "hash": "bf710f72fd4ecb328f8f2253c913813d8f3ae4a063dcd54aed2e4b117b1b2c37",
+    "bin": "ani-cli",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/pystardust/ani-cli/refs/tags/v$version/ani-cli"
+    }
+}
