@@ -1,5 +1,5 @@
 {
-    "version": "1.127.0-2026.174.17",
+    "version": "1.127.0-2026.174.17.8",
     "description": "Visual Studio Code Insiders is a lightweight yet powerful, cross-platform source code editor providing rich support for development, debugging, and extension-based customization for modern web and cloud workloads.",
     "homepage": "https://code.visualstudio.com/insiders",
     "license": {
@@ -113,7 +113,7 @@
             "$release = $page | ConvertFrom-Json -ErrorAction Stop",
             "$relative_path = $release.url -replace '.+(?=insider/)', ''",
             "$time = [DateTimeOffset]::FromUnixTimeMilliseconds($release.timestamp)",
-            "Write-Output \"$relative_path, $($time.Year).$($time.DayOfYear).$($time.Hour)\""
+            "Write-Output \"$relative_path, $($time.Year).$($time.DayOfYear).$($time.Hour).$($time.Minute)\""
         ],
         "regex": "insider/(?<commit>[^/]+)/VSCode-win32-x64-(?<prefix>[\\d.]+)[^\\d]+(?<suffix>[\\d.]+)",
         "replace": "${prefix}-${suffix}"
