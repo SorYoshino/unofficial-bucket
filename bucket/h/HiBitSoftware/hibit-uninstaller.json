@@ -5,12 +5,6 @@
     "license": "Freeware",
     "url": "https://www.hibitsoft.ir/HiBitUninstaller/HiBitUninstaller-Portable-4.0.10.zip",
     "hash": "986b1e07de8037cda70e4d2cf01010e2660042f79f233bbac91846de94741646",
-    "pre_install": [
-        "ensure $persist_dir | Out-Null",
-        "if (-not (Test-Path -Path \"$persist_dir\\HiBitUninstaller\\*\")) {",
-        "    New-Item -Path \"$dir\\HiBitUninstaller\\Settings.ini\" -ItemType File -Force | Out-Null",
-        "}"
-    ],
     "shortcuts": [
         [
             "HiBitUninstaller-Portable.exe",
