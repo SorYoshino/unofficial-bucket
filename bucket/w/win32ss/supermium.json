@@ -63,10 +63,6 @@
             "32bit": {
                 "url": "https://github.com/win32ss/supermium/releases/download/$matchTag/supermium_$majorVersion_32_setup.exe"
             }
-        },
-        "hash": {
-            "url": "https://github.com/win32ss/supermium/releases/tag/$matchTag",
-            "regex": "(?s)$basename.+?$checksum"
         }
     }
 }
