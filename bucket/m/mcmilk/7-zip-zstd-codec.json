@@ -1,5 +1,5 @@
 {
-    "version": "26.01-1.5.7-r1",
+    "version": "26.02-1.5.7-r1",
     "description": "A plugin for 7-Zip installations that adds support for modern compression codecs, including Zstandard, Brotli, LZ4, LZ5, Lizard, and Fast-LZMA2.",
     "homepage": "https://github.com/mcmilk/7-Zip-zstd",
     "license": {
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-x64.7z",
-            "hash": "d2fb80267777a41b1843d5663353e55a5caf4761c7a8bd0bc5d4771fac0ce835"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x64.7z",
+            "hash": "d7cf7093fa9a14a2a7c748f1d4433015823c3bca3e2a82dd1d8703799678557f"
         },
         "32bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-x86.7z",
-            "hash": "e56f079f64c6a02682f951b2904f03527f49ca2848dc437638f16f7e0807069d"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x86.7z",
+            "hash": "04c03224fee532ee927238c9e3f38b3469190a220d72b88324bdb1ca76f48e9e"
         },
         "arm64": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/Codecs-arm64.7z",
-            "hash": "7fab1c8ac0e1caf9b7b440c1b540ea8c9676d2c4470dcb9194a215a7331b579b"
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-arm64.7z",
+            "hash": "83bd7ba0560fd78ea3c3569421f46c77419f492e82e45dc3e5a566bae00aec41"
         }
     },
     "installer": {
