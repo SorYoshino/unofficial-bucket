@@ -1,7 +1,7 @@
 {
     "version": "0.5.0",
     "description": "A cross-platform Rust reimplementation of GNU diffutils (binaries compiled with MSVC), with some options or behaviors potentially differing from GNU diffutils.",
-    "homepage": "https://uutils.github.io/diffutils/",
+    "homepage": "https://uutils.org/diffutils/",
     "license": "MIT|Apache-2.0",
     "suggest": {
         "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
@@ -47,7 +47,7 @@
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$baseurl/sha256.sum"
         }
     }
 }
