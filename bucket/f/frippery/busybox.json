@@ -30,10 +30,10 @@
         "$process.WaitForExit()",
         "if (-not [string]::IsNullOrWhiteSpace($stdout_response)) {",
         "    Write-Output \"`nCreating shim for 'busybox'....\"",
-        "    $utilities_name = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
-        "    Set-Content -Path \"$original_dir\\utilities_name.ini\" -Value $utilities_name -Encoding utf8",
+        "    $utility_names = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
+        "    Set-Content -Path \"$original_dir\\utility_names.ini\" -Value $utility_names -Encoding utf8",
         "    shim \"$original_dir\\busybox.exe\" $global 'busybox' $null",
-        "    $utilities_name | ForEach-Object -Process {",
+        "    $utility_names | ForEach-Object -Process {",
         "        Write-Output \"Creating shim for '$($_.Trim())'...\"",
         "        shim \"$original_dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
         "    }",
@@ -42,8 +42,8 @@
     "uninstaller": {
         "script": [
             "rm_shim 'busybox' $(shimdir $global) $app",
-            "$utilities_name = Get-Content -Path \"$dir\\utilities_name.ini\" -Encoding utf8",
-            "$utilities_name | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' } | ForEach-Object -Process {",
+            "$utility_names = Get-Content -Path \"$dir\\utility_names.ini\" -Encoding utf8",
+            "$utility_names | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' } | ForEach-Object -Process {",
             "    rm_shim $_.Trim() $(shimdir $global) $app",
             "}"
         ]
