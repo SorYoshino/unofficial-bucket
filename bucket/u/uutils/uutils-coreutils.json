@@ -12,73 +12,58 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.9.0/coreutils-0.9.0-x86_64-pc-windows-msvc.zip",
-            "hash": "77b4cad20258b654a75c4cde7f4f7033ea896a71a700f68072ee44599c1d76d4"
+            "hash": "77b4cad20258b654a75c4cde7f4f7033ea896a71a700f68072ee44599c1d76d4",
+            "extract_dir": "coreutils-0.9.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.9.0/coreutils-0.9.0-i686-pc-windows-msvc.zip",
-            "hash": "8ea2031e7314e9cf917a000ecc7f9e3ae73bb2ce653218c3fde0c30bdd61b658"
+            "hash": "8ea2031e7314e9cf917a000ecc7f9e3ae73bb2ce653218c3fde0c30bdd61b658",
+            "extract_dir": "coreutils-0.9.0-i686-pc-windows-msvc"
         },
         "arm64": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.9.0/coreutils-0.9.0-aarch64-pc-windows-msvc.zip",
-            "hash": "c792e3949a6a3d91f944b765aab6f0b62cf213e886b347dbb81c66d7e0499d04"
+            "hash": "c792e3949a6a3d91f944b765aab6f0b62cf213e886b347dbb81c66d7e0499d04",
+            "extract_dir": "coreutils-0.9.0-aarch64-pc-windows-msvc"
         }
     },
-    "pre_install": [
-        "$current_depth = 0",
-        "while ($current_depth -lt 5) {",
-        "    $items = Get-ChildItem -Path $dir | Select-Object -First 3",
-        "    if ($items.Count -eq 1 -and $items.PSIsContainer) {",
-        "        $inner_dir = $items | ForEach-Object -MemberName FullName",
-        "        Move-Item -Path \"$inner_dir\\*\" -Destination $dir -Force",
-        "        Remove-Item -Path $inner_dir -Recurse -Force -ErrorAction SilentlyContinue",
-        "        $current_depth++",
-        "    } else { break }",
-        "}"
-    ],
     "post_install": [
         "$program_files = Get-ChildItem -Path $original_dir -Filter '*.exe' -File",
-        "if ($program_files.Count -eq 0) { abort \"`nNo executable files found in '$original_dir'. Aborting installation.\" }",
+        "if ($program_files.Count -eq 0) { abort \"`nShim creation failed: 'coreutils.exe' could not be found in '$original_dir'.\" }",
         "if ($program_files.Count -eq 1) {",
         "    $process_info = [System.Diagnostics.ProcessStartInfo]@{",
         "        FileName = $program_files.FullName; Arguments = '--list'",
         "        CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
         "    }",
         "    $process = [System.Diagnostics.Process]::Start($process_info)",
-        "    $utilities_name = $process.StandardOutput.ReadToEnd() -split \"`r?`n\"",
+        "    $stdout_response = $process.StandardOutput.ReadToEnd()",
         "    $process.WaitForExit()",
-        "    Write-Output \"`nCreating shim for 'coreutils'...\"",
-        "    shim \"$original_dir\\coreutils.exe\" $global 'coreutils' $null",
-        "    $utilities_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object -Process {",
-        "        Write-Output \"Creating shim for '$($_.Trim())'...\"",
-        "        shim \"$original_dir\\coreutils.exe\" $global $_.Trim() $_.Trim()",
+        "    if (-not [string]::IsNullOrWhiteSpace($stdout_response)) {",
+        "        Write-Output \"`nCreating shim for 'coreutils'....\"",
+        "        $utility_names = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
+        "        shim \"$original_dir\\coreutils.exe\" $global 'coreutils' $null",
+        "        $utility_names | ForEach-Object -Process {",
+        "            Write-Output \"Creating shim for '$($_.Trim())'...\"",
+        "            shim \"$original_dir\\coreutils.exe\" $global $_.Trim() $_.Trim()",
+        "        }",
+        "        $utility_names = , 'coreutils' + $utility_names",
+        "    } else {",
+        "        abort \"`nShim creation failed: Unable to retrieve utility names from 'coreutils --list' output.\" ",
         "    }",
         "} else {",
-        "    $program_files | Foreach-Object -Process {",
+        "    $utilities = $program_files | Where-Object -FilterScript { $_.BaseName -notmatch '^([\\s[]|$)' }",
+        "    $utility_names = $utilities | ForEach-Object -MemberName BaseName",
+        "    $utilities | Foreach-Object -Process {",
         "        Write-Output \"Creating shim for '$($_.BaseName)'...\"",
         "        shim $_.FullName $global $_.BaseName $null",
         "    }",
-        "}"
+        "}",
+        "Set-Content -Path \"$original_dir\\utility_names.ini\" -Value $utility_names -Encoding utf8"
     ],
     "uninstaller": {
         "script": [
-            "$program_files = Get-ChildItem -Path $dir -Filter '*.exe' -File",
-            "if ($program_files.Count -eq 0) { abort \"`nNo executable files found in '$dir'. Aborting installation.\" }",
-            "if ($program_files.Count -eq 1) {",
-            "    $process_info = [System.Diagnostics.ProcessStartInfo]@{",
-            "        FileName = $program_files.FullName; Arguments = '--list'",
-            "        CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-            "    }",
-            "    $process = [System.Diagnostics.Process]::Start($process_info)",
-            "    $utilities_name = $process.StandardOutput.ReadToEnd() -split \"`r?`n\"",
-            "    $process.WaitForExit()",
-            "    rm_shim 'coreutils' $(shimdir $global) $app",
-            "    $utilities_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object -Process {",
-            "        rm_shim $_.Trim() $(shimdir $global) $app",
-            "    }",
-            "} else {",
-            "    $program_files | ForEach-Object -Process {",
-            "        rm_shim $_.BaseName $(shimdir $global) $app",
-            "    }",
+            "$utility_names = Get-Content -Path \"$dir\\utility_names.ini\" -Encoding utf8",
+            "$utility_names | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' } | ForEach-Object -Process {",
+            "    rm_shim $_.Trim() $(shimdir $global) $app",
             "}"
         ]
     },
@@ -88,13 +73,16 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-x86_64-pc-windows-msvc"
             },
             "32bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-i686-pc-windows-msvc"
             },
             "arm64": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-aarch64-pc-windows-msvc.zip"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-aarch64-pc-windows-msvc"
             }
         }
     }
