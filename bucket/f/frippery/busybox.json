@@ -20,39 +20,30 @@
             "hash": "e67f873d19d58c535cc9f0c4965ffd622e19b7bab87e3da89cb2185fb54464d7"
         }
     },
-    "pre_install": [
-        "if (-not (Test-Path -Path \"$HOME\\.profile\" -PathType Leaf)) {",
-        "    Write-Host \"`nINFO  Creating '~/.profile'...\" -ForegroundColor DarkGray",
-        "    $cfg = @('if [ -f ~/.bashrc ]; then', '    source ~/.bashrc', 'fi')",
-        "    Set-Content -Path \"$HOME\\.profile\" -Value $cfg -Encoding oem",
-        "}"
-    ],
     "post_install": [
         "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
         "    FileName = \"$original_dir\\busybox.exe\"; Arguments = '--list'",
         "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
         "}",
         "$process = [System.Diagnostics.Process]::Start($process_info)",
-        "$utilities_name = $process.StandardOutput.ReadToEnd() -split \"`r?`n\"",
+        "$stdout_response = $process.StandardOutput.ReadToEnd()",
         "$process.WaitForExit()",
-        "Write-Output \"`nCreating shim for 'busybox'....\"",
-        "shim \"$original_dir\\busybox.exe\" $global 'busybox' $null",
-        "$utilities_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object -Process {",
-        "    Write-Output \"Creating shim for '$($_.Trim())'...\"",
-        "    shim \"$original_dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
-        "}"
+        "if (-not [string]::IsNullOrWhiteSpace($stdout_response)) {",
+        "    Write-Output \"`nCreating shim for 'busybox'....\"",
+        "    $utilities_name = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
+        "    Set-Content -Path \"$original_dir\\utilities_name.ini\" -Value $utilities_name -Encoding utf8",
+        "    shim \"$original_dir\\busybox.exe\" $global 'busybox' $null",
+        "    $utilities_name | ForEach-Object -Process {",
+        "        Write-Output \"Creating shim for '$($_.Trim())'...\"",
+        "        shim \"$original_dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
+        "    }",
+        "} else { abort \"`nShim creation failed: Unable to retrieve utility names from 'busybox --list' output.\" }"
     ],
     "uninstaller": {
         "script": [
-            "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-            "    FileName = \"$dir\\busybox.exe\"; Arguments = '--list'",
-            "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-            "}",
-            "$process = [System.Diagnostics.Process]::Start($process_info)",
-            "$utilities_name = $process.StandardOutput.ReadToEnd() -split \"`r?`n\"",
-            "$process.WaitForExit()",
             "rm_shim 'busybox' $(shimdir $global) $app",
-            "$utilities_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object -Process {",
+            "$utilities_name = Get-Content -Path \"$dir\\utilities_name.ini\" -Encoding utf8",
+            "$utilities_name | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' } | ForEach-Object -Process {",
             "    rm_shim $_.Trim() $(shimdir $global) $app",
             "}"
         ]
