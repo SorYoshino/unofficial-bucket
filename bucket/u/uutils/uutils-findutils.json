@@ -1,0 +1,34 @@
+{
+    "version": "0.9.1",
+    "description": "A cross-platform Rust reimplementation of GNU findutils (binaries compiled with MSVC), with some options or behaviors potentially differing from GNU findutils.",
+    "homepage": "https://uutils.org/findutils/",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/uutils/findutils/blob/HEAD/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/uutils/findutils/releases/download/0.9.1/findutils-x86_64-pc-windows-msvc.zip",
+            "hash": "3cd96c5073a4fa2d913365a179327653bd038c646d4c613e93f8a4dc62e82be6"
+        }
+    },
+    "bin": [
+        "find.exe",
+        "xargs.exe",
+        "locate.exe",
+        "updatedb.exe"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/uutils/findutils/releases/latest"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/uutils/findutils/releases/download/$version/findutils-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256.sum"
+        }
+    }
+}
