@@ -1,13 +1,13 @@
 {
-    "version": "18.1.5.4",
+    "version": "18.1.5.5",
     "description": "Display Driver Uninstaller (DDU) is a driver removal utility that can help you completely uninstall AMD/NVIDIA/INTEL graphics card drivers and packages from your system, trying to remove all leftovers (including registry keys, folders and files, driver store).",
     "homepage": "https://www.wagnardsoft.com/display-driver-uninstaller-ddu",
     "license": {
         "identifier": "MIT",
         "url": "https://github.com/Wagnard/display-drivers-uninstaller/blob/HEAD/LICENSE"
     },
-    "url": "https://www.wagnardsoft.com/DDU/download/DDU%20v18.1.5.4.exe#/DDU-18.1.5.4.exe",
-    "hash": "fa6656c25241f1ce94460d3eedf2982ccf272f8c82589fc257c60182b2e5168a",
+    "url": "https://www.wagnardsoft.com/DDU/download/DDU%20v18.1.5.5.exe#/DDU-18.1.5.5.exe",
+    "hash": "f5a5095018ea5641b68dc622570770c5815fa73ecbf053018925fbb126cbc3b9",
     "pre_install": [
         "# Hard links are not applicable here because the application creates a new file instead of modifying the existing one in place.",
         "$dir, $persist_dir | ForEach-Object -Process { ensure \"$_\\settings\" | Out-Null }",
