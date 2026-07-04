@@ -8,7 +8,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/arm64/1.0.43/DiscordPTBSetup.exe",
+            "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/arm64/1.0.43/DiscordPTBSetup.exe#/DiscordPTB-1.0.43-aarch64-Setup.exe",
             "hash": "3e49a35fe386e6b53f33b045a7e7111df0bb136dec6dc135eedc4751eaf6fdef"
         }
     },
@@ -38,7 +38,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/arm64/$version/DiscordPTBSetup.exe"
+                "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/arm64/$version/DiscordPTBSetup.exe#/DiscordPTB-$version-aarch64-Setup.exe"
             }
         }
     }

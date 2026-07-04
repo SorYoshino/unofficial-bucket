@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/Forensic7z.zip",
+    "url": "https://www.tc4shell.com/binary/Forensic7z.zip#/Forensic7z-1.6-universal-windows.7z",
     "hash": "c0210c789681981d7d5d00eac06569566ec767dc1c3ea78acae8ab4b7da8a295",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/Forensic7z.zip"
+        "url": "https://www.tc4shell.com/binary/Forensic7z.zip#/Forensic7z-$version-universal-windows.7z"
     }
 }

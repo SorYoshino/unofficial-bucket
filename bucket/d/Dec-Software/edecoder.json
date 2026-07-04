@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/eDecoder.zip",
+    "url": "https://www.tc4shell.com/binary/eDecoder.zip#/eDecoder-1.20.8-universal-windows.7z",
     "hash": "cbd6c0357df0d419a6ac4bcf89dcc972a8ccfb8d5ba0cdd2b876ad21ef4217ab",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/eDecoder.zip"
+        "url": "https://www.tc4shell.com/binary/eDecoder.zip#/eDecoder-$version-universal-windows.7z"
     }
 }

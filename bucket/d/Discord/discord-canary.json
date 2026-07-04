@@ -8,7 +8,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/x64/1.0.1026/DiscordCanarySetup.exe",
+            "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/x64/1.0.1026/DiscordCanarySetup.exe#/DiscordCanary-1.0.1026-x86_64-Setup.exe",
             "hash": "8b58727feb8766368986215b039c272936833edd66cff5b8eada6b1e4f675ea1"
         }
     },
@@ -38,7 +38,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/x64/$version/DiscordCanarySetup.exe"
+                "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/x64/$version/DiscordCanarySetup.exe#/DiscordCanary-$version-x86_64-Setup.exe"
             }
         }
     }

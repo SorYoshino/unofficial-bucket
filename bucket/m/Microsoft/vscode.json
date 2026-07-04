@@ -16,11 +16,11 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://update.code.visualstudio.com/1.127.0/win32-x64-archive/stable#/dl.7z",
+            "url": "https://update.code.visualstudio.com/1.127.0/win32-x64-archive/stable#/VSCode-1.127.0-x86_64-windows.7z",
             "hash": "38e798f0429c6607baa0575b78dd24ed6fe4e6b614156c413b11c75a81cf5b11"
         },
         "arm64": {
-            "url": "https://update.code.visualstudio.com/1.127.0/win32-arm64-archive/stable#/dl.7z",
+            "url": "https://update.code.visualstudio.com/1.127.0/win32-arm64-archive/stable#/VSCode-1.127.0-aarch64-windows.7z",
             "hash": "80142b32c34877a51ccae223fec8fd4315b24427e247a3df800ac657bef44dd8"
         }
     },
@@ -114,14 +114,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/dl.7z",
+                "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/VSCode-$version-x86_64-windows.7z",
                 "hash": {
                     "url": "https://update.code.visualstudio.com/api/versions/$version/win32-x64-archive/stable",
                     "jsonpath": "$.sha256hash"
                 }
             },
             "arm64": {
-                "url": "https://update.code.visualstudio.com/$version/win32-arm64-archive/stable#/dl.7z",
+                "url": "https://update.code.visualstudio.com/$version/win32-arm64-archive/stable#/VSCode-$version-aarch64-windows.7z",
                 "hash": {
                     "url": "https://update.code.visualstudio.com/api/versions/$version/win32-arm64-archive/stable",
                     "jsonpath": "$.sha256hash"

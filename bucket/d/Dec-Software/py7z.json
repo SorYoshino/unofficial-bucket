@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/Py7z.zip",
+    "url": "https://www.tc4shell.com/binary/Py7z.zip#/Py7z-1.2.1-universal-windows.7z",
     "hash": "46852cc664be105c62d619c7c9d9fe28e34cb1e85557b8f91a8322ca7e1ff29d",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/Py7z.zip"
+        "url": "https://www.tc4shell.com/binary/Py7z.zip#/Py7z-$version-universal-windows.7z"
     }
 }

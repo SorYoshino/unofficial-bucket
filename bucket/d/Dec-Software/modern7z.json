@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/Modern7z.zip",
+    "url": "https://www.tc4shell.com/binary/Modern7z.zip#/Modern7z-1.9.2-universal-windows.7z",
     "hash": "3cd202da38024c85512822a42da2897095334bedd910f34c3339c54b7c88f5f0",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/Modern7z.zip"
+        "url": "https://www.tc4shell.com/binary/Modern7z.zip#/Modern7z-$version-universal-windows.7z"
     }
 }

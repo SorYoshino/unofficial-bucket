@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/MFilter.zip",
+    "url": "https://www.tc4shell.com/binary/MFilter.zip#/MFilter-1.2-universal-windows.7z",
     "hash": "88cf912f84c0d9cb36646e095ae64f6c8e5c646a4699e922b507402a10ecd754",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/MFilter.zip"
+        "url": "https://www.tc4shell.com/binary/MFilter.zip#/MFilter-$version-universal-windows.7z"
     }
 }

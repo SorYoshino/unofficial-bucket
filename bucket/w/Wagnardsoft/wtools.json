@@ -5,7 +5,7 @@
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://download.wagnardsoft.com/WTools/WTools%20v1.0.8.3.exe#/WTools-1.0.8.3.exe",
+            "url": "https://download.wagnardsoft.com/WTools/WTools%20v1.0.8.3.exe#/WTools-1.0.8.3-x86_64-Portable.exe",
             "hash": "fb2b4c486abf216a9af76cc6c6dcfdbff59d424701033a6a3725a1d88722c7df"
         }
     },
@@ -47,7 +47,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.wagnardsoft.com/WTools/WTools%20v$version.exe#/WTools-$version.exe"
+                "url": "https://download.wagnardsoft.com/WTools/WTools%20v$version.exe#/WTools-$version-x86_64-Portable.exe"
             }
         },
         "hash": {

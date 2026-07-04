@@ -15,7 +15,7 @@
         "- Such tracks do not contain additional housekeeping data.",
         "- In these cases, it is advisable to use another compression method, such as LZMA2."
     ],
-    "url": "https://www.tc4shell.com/binary/Iso7z.zip",
+    "url": "https://www.tc4shell.com/binary/Iso7z.zip#/Iso7z-1.8.7-universal-windows.7z",
     "hash": "4b41b567025cf884198d7f810994d37e4024b6d538871b1f93283bb1a67ccafd",
     "architecture": {
         "64bit": {
@@ -57,6 +57,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/Iso7z.zip"
+        "url": "https://www.tc4shell.com/binary/Iso7z.zip#/Iso7z-$version-universal-windows.7z"
     }
 }

@@ -3,7 +3,7 @@
     "description": "Intelligent Standby List Cleaner (ISLC) is a lightweight memory optimization utility that automatically manages the Windows standby memory list to improve system responsiveness and reduce memory-related performance issues.",
     "homepage": "https://www.wagnardsoft.com/intelligent-standby-list-cleaner",
     "license": "Freeware",
-    "url": "https://download.wagnardsoft.com/ISLC/ISLC%20v1.0.4.6.exe#/ISLC-1.0.4.6.exe",
+    "url": "https://download.wagnardsoft.com/ISLC/ISLC%20v1.0.4.6.exe#/ISLC-1.0.4.6-i686-Portable.exe",
     "hash": "606dcba965af417d97486b125723bbc5cce92f830c7791def06b0c542a10df50",
     "pre_install": [
         "# Hard links are not applicable here because the application creates a new file instead of modifying the existing one in place.",
@@ -43,7 +43,7 @@
         "regex": "(?<=\\?t=)(?<topic>\\w+), ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://download.wagnardsoft.com/ISLC/ISLC%20v$version.exe#/ISLC-$version.exe",
+        "url": "https://download.wagnardsoft.com/ISLC/ISLC%20v$version.exe#/ISLC-$version-i686-Portable.exe",
         "hash": {
             "url": "https://www.wagnardsoft.com/forums/viewtopic.php?t=$matchTopic",
             "regex": "(?s)Portable.+?SHA-256.+?$sha256.+?Portable"

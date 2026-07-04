@@ -6,7 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.tc4shell.com/en/termsofuse/"
     },
-    "url": "https://www.tc4shell.com/binary/Asar.zip",
+    "url": "https://www.tc4shell.com/binary/Asar.zip#/Asar7z-1.5-universal-windows.7z",
     "hash": "ea17751b2d7d607dfc11612e71d0c9d36561e643cdfb2bfb16922a9a0ec6d250",
     "architecture": {
         "64bit": {
@@ -48,6 +48,6 @@
     },
     "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
-        "url": "https://www.tc4shell.com/binary/Asar.zip"
+        "url": "https://www.tc4shell.com/binary/Asar.zip#/Asar7z-$version-universal-windows.7z"
     }
 }

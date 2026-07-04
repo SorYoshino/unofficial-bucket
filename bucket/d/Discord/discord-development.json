@@ -8,7 +8,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://development.dl2.discordapp.net/distro/app/development/win/x64/1.0.1014/DiscordDevelopmentSetup.exe",
+            "url": "https://development.dl2.discordapp.net/distro/app/development/win/x64/1.0.1014/DiscordDevelopmentSetup.exe#/DiscordDevelopment-1.0.1014-x86_64-Setup.exe",
             "hash": "b35eee3b83344c3d715696bafc503fc2844c49403820643911ceb6fa47449709"
         }
     },
@@ -38,7 +38,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://development.dl2.discordapp.net/distro/app/development/win/x64/$version/DiscordDevelopmentSetup.exe"
+                "url": "https://development.dl2.discordapp.net/distro/app/development/win/x64/$version/DiscordDevelopmentSetup.exe#/DiscordDevelopment-$version-x86_64-Setup.exe"
             }
         }
     }

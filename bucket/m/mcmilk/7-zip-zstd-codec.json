@@ -8,15 +8,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x64.7z",
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x64.7z#/Codecs-26.02-1.5.7-r1-x86_64-windows.7z",
             "hash": "d7cf7093fa9a14a2a7c748f1d4433015823c3bca3e2a82dd1d8703799678557f"
         },
         "32bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x86.7z",
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-x86.7z#/Codecs-26.02-1.5.7-r1-i686-windows.7z",
             "hash": "04c03224fee532ee927238c9e3f38b3469190a220d72b88324bdb1ca76f48e9e"
         },
         "arm64": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-arm64.7z",
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.02-v1.5.7-R1/Codecs-arm64.7z#/Codecs-26.02-1.5.7-r1-aarch64-windows.7z",
             "hash": "83bd7ba0560fd78ea3c3569421f46c77419f492e82e45dc3e5a566bae00aec41"
         }
     },
@@ -51,13 +51,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x64.7z"
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x64.7z#/Codecs-$version-x86_64-windows.7z"
             },
             "32bit": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x86.7z"
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-x86.7z#/Codecs-$version-i686-windows.7z"
             },
             "arm64": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-arm64.7z"
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$matchTag/Codecs-arm64.7z#/Codecs-$version-aarch64-windows.7z"
             }
         }
     }
