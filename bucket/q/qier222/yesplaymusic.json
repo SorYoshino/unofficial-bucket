@@ -18,7 +18,7 @@
     "installer": {
         "script": [
             "Expand-7zipArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\\tmp\" -ExtractDir '$PLUGINSDIR' -Removal",
-            "Get-ChildItem -Path \"$dir\\tmp\" -Filter '*.7z' -FIle | Expand-7zipArchive -DestinationPath $dir -Removal",
+            "Get-ChildItem -Path \"$dir\\tmp\" -Filter '*.7z' -File | Expand-7zipArchive -DestinationPath $dir -Removal",
             "Remove-Item -Path \"$dir\\tmp\" -Recurse -Force -ErrorAction SilentlyContinue"
         ]
     },
