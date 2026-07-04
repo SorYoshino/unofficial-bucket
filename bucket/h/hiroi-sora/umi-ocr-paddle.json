@@ -35,15 +35,14 @@
     },
     "post_install": [
         "$plugins_dir = \"$dir\\UmiOCR-data\\plugins\"",
-        "$original_logs_dir = \"$dir\\UmiOCR-data\\logs.original\"",
         "$original_plugins_dir = \"$dir\\UmiOCR-data\\plugins.original\"",
-        "if (Test-Path -Path \"$original_plugins_dir\" -PathType Container) {",
+        "if (Test-Path -Path $original_plugins_dir -PathType Container) {",
         "    Write-Host \"`nINFO  Removing old bundled plugins from '$plugins_dir'...\" -ForegroundColor DarkGray",
-        "    Get-ChildItem -Path $plugins_dir -Filter '*Paddle*' -Directory | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue",
+        "    Get-ChildItem -Path $plugins_dir -Filter '*Paddle*' -Directory | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue",
         "    Write-Host \"INFO  Updating bundled plugins to '$plugins_dir'...\" -ForegroundColor DarkGray",
-        "    Copy-Item -Path \"$original_plugins_dir\\*\" -Destination $plugins_dir -Force -Recurse",
-        "}",
-        "$original_logs_dir, $original_plugins_dir | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue"
+        "    Move-Item -Path \"$original_plugins_dir\\*\" -Destination $plugins_dir -Force",
+        "    Remove-Item -Path $original_plugins_dir -Recurse -Force -ErrorAction SilentlyContinue",
+        "}"
     ],
     "bin": "Umi-OCR.exe",
     "shortcuts": [

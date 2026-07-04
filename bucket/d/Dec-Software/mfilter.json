@@ -11,13 +11,13 @@
     "architecture": {
         "64bit": {
             "pre_install": [
-                "Copy-Item -Path \"$dir\\64\\*\" -Destination $dir -Force -Recurse",
+                "Move-Item -Path \"$dir\\64\\*\" -Destination $dir -Force",
                 "'32', '64' | ForEach-Object -Process { Remove-Item -Path \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }"
             ]
         },
         "32bit": {
             "pre_install": [
-                "Copy-Item -Path \"$dir\\32\\*\" -Destination $dir -Force -Recurse",
+                "Move-Item -Path \"$dir\\32\\*\" -Destination $dir -Force",
                 "'32', '64' | ForEach-Object -Process { Remove-Item -Path \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }"
             ]
         }
