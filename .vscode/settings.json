@@ -3,10 +3,40 @@
     "[powershell]": {
         "editor.formatOnSave": true
     },
+    // -----------------------------------------------  BEGIN: ms-vscode.powershell - Configuration  ------------------------------------------------
     "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
+    // ---------------------------------------  BEGIN: ms-vscode.powershell - Interface Configuration  ----------------------------------------
+    // -----------------------------------------------------  Editor Assistance  ------------------------------------------------------
+    "powershell.enableReferencesCodeLens": true,
+    "powershell.codeFolding.enable": true,
+    "powershell.codeFolding.showLastLine": true,
+    "powershell.helpCompletion": "BlockComment",
+    // ----------------------------------------  END: ms-vscode.powershell - Interface Configuration  -----------------------------------------
+    // ----------------------------------------  BEGIN: ms-vscode.powershell - Formatting Configuration  ---------------------------------------
+    // ---------------------------------------------------  Spacing and Formatting  ---------------------------------------------------
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+    "powershell.codeFormatting.whitespaceInsideBrace": true,
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    // -----------------------------------------------------  Structural Layout  ------------------------------------------------------
     "powershell.codeFormatting.preset": "OTBS",
-    "powershell.codeFormatting.alignPropertyValuePairs": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.newLineAfterCloseBrace": false,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
     "powershell.codeFormatting.ignoreOneLineBlock": true,
+    // ----------------------------------------------  Optimization and Standardization  ----------------------------------------------
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": false,
+    // -----------------------------------------  END: ms-vscode.powershell - Formatting Configuration  ----------------------------------------
+    // ------------------------------------------------  END: ms-vscode.powershell - Configuration  -------------------------------------------------
     "json.schemas": [
         {
             "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
