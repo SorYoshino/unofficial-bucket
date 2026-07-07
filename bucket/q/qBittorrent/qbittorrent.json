@@ -1,5 +1,5 @@
 {
-    "version": "5.2.2",
+    "version": "5.2.3",
     "description": "A free and open-source BitTorrent client developed in C++ and Qt, based on the libtorrent-rasterbar library, aiming to be a high-quality alternative among BitTorrent clients, with fast and stable performance, rich features, and a consistent cross-platform experience.",
     "homepage": "https://www.qbittorrent.org",
     "license": {
@@ -21,8 +21,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-5.2.2/qbittorrent_5.2.2_lt20_x64_setup.exe",
-            "hash": "sha1:f0f07ece5ffcc61fbe11ea7dadca4346c88b4089"
+            "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-5.2.3/qbittorrent_5.2.3_lt20_x64_setup.exe",
+            "hash": "sha1:01066f18179c5769ff3912114a1a8f68ebb8cd34"
         }
     },
     "pre_install": [
