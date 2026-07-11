@@ -10,9 +10,7 @@
         "To register file associations, please execute the following command:",
         "- `reg import \"$dir\\register-file-associations.reg\"`",
         "To register the context menu entry, please execute the following command:",
-        "- `reg import \"$dir\\register-context-menu.reg\"`",
-        "To register the installed program entry (required for integration with other applications), please execute the following command:",
-        "- `reg import \"$dir\\register-installed-program.reg\"`"
+        "- `reg import \"$dir\\register-context-menu.reg\"`"
     ],
     "architecture": {
         "64bit": {
@@ -45,8 +43,15 @@
         "    $settings | ConvertTo-Json -Depth 5 | Set-Content -Path $settings_file -NoNewline -Encoding utf8",
         "}"
     ],
+    "installer": {
+        "script": [
+            "startmenu_shortcut \"$dir\\Code - Insiders.exe\" 'Visual Studio Code - Insiders' $null $null $global",
+            "persist_data @{ persist = @('data') } $dir  $persist_dir",
+            "persist_permission @{ persist = @('data') } $global"
+        ]
+    },
     "post_install": [
-        "$vscode_insiders_dir = $dir -replace '\\\\', '\\\\'",
+        "$vscode_insiders_dir = $original_dir -replace '\\\\', '\\\\'",
         "$product_json_file = Get-ChildItem -Path $dir -Include '*.json' -Depth 3 -File |",
         "        Where-Object -FilterScript { $_.DirectoryName -match 'app$' -and $_.BaseName -match '^product' } |",
         "        Select-Object -ExpandProperty FullName -First 1",
@@ -55,7 +60,7 @@
         "    $arch_map = @{ '64bit' = 'x64'; 'arm64' = 'arm64' }",
         "    $product_metadata = Get-Content -Path $product_json_file -Encoding utf8 | ConvertFrom-Json",
         "    $product_property_key = 'win32{0}{1}AppId' -f $arch_map[$architecture], $scope",
-        "    $product_identity_guid = $product_metadata.$product_property_key -replace '^{{(.+)}$', '$1'",
+        "    $product_identity_guid = $product_metadata.$product_property_key.Trim('{', '}')",
         "}",
         "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object -Process {",
         "    $content = Get-Content -Path $_.FullName -Encoding utf8",
@@ -63,8 +68,8 @@
         "    if ($product_identity_guid) { $content = $content -replace '(?<={).+(?=}_is1)', $product_identity_guid }",
         "    $content -replace '{{vscode_insiders_dir}}', $vscode_insiders_dir | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
         "}",
-        "$register_installed_file = '\"{0}\\register-installed-program.reg\"' -f $dir",
-        "Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $register_installed_file) -WindowStyle Hidden -Wait",
+        "Write-Output \"`nAdding '$(friendly_path \"$original_dir\\bin\")' to $(if ($global) { 'global' } else { 'your' }) path...\"",
+        "Add-Path -Path \"$original_dir\\bin\" -Global:$global -Quiet -Force",
         "ensure \"$dir\\resources\\app\\resources\\win32\" | Out-Null",
         "$original_resources_dir = Get-ChildItem -Path $dir -Include '*.ico' -Depth 5 -File |",
         "        Where-Object -FilterScript { $_.DirectoryName -match 'resources\\\\win32$' } |",
@@ -73,7 +78,7 @@
         "$data_dir = \"$original_dir\\data\" -replace '\\\\', '/'",
         "$extensions_file = \"$dir\\data\\extensions\\extensions.json\"",
         "if (Test-Path -Path $extensions_file -PathType Leaf) {",
-        "    Write-Host \"`nINFO  Adjusting path in extensions file...\" -ForegroundColor DarkGray",
+        "    Write-Host \"INFO  Adjusting path in extensions file...\" -ForegroundColor DarkGray",
         "    $cfg = Get-Content -Path $extensions_file -Encoding utf8 | ConvertFrom-Json",
         "    $cfg | ForEach-Object -Process {",
         "        $_.location.PSObject.Properties.Remove('_sep')",
@@ -85,35 +90,48 @@
         "        }",
         "    }",
         "    , @($cfg) | ConvertTo-Json -Depth 5 -Compress | Set-Content -Path $extensions_file -NoNewline -Encoding utf8",
+        "}",
+        "$registry_hive = if ($global) { 'HKLM' } else { 'HKCU' }",
+        "$register_installed_file = '\"{0}\\register-installed-program.reg\"' -f $dir",
+        "Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $register_installed_file) -WindowStyle Hidden -Wait",
+        "@(",
+        "    @{ Path = \"${registry_hive}:\\Software\\Classes\\VSCodeInsiders.*\"; IsLiteral = $false; File = 'register-file-associations.reg' }",
+        "    @{ Path = \"${registry_hive}:\\Software\\Classes\\*\\shell\\VSCodeInsiders\"; IsLiteral = $true; File = 'register-context-menu.reg' }",
+        ") | ForEach-Object -Process {",
+        "    $is_match = if ($_.IsLiteral) { Test-Path -LiteralPath $_.Path } else { Test-Path -Path $_.Path }",
+        "    if ($is_match) {",
+        "        $registry_file = '\"{0}\\{1}\"' -f $original_dir, $_.File",
+        "        Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $registry_file) -WindowStyle Hidden -Wait",
+        "    }",
         "}"
     ],
-    "env_add_path": "bin",
-    "shortcuts": [
-        [
-            "Code - Insiders.exe",
-            "Visual Studio Code - Insiders"
-        ]
-    ],
-    "persist": "data",
     "uninstaller": {
         "script": [
+            "Write-Output \"`nRemoving '$(friendly_path \"$dir\\bin\")' from $(if ($global) { 'global' } else { 'your' }) path...\"",
+            "Remove-Path -Path \"$dir\\bin\" -Global:$global -Quiet -Force",
             "$unregister_installed_file = '\"{0}\\unregister-installed-program.reg\"' -f $dir",
             "Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $unregister_installed_file) -WindowStyle Hidden -Wait",
-            "if ($cmd -ne 'uninstall') { return }",
-            "Get-ChildItem -Path $dir -Filter 'un*.reg' -File |",
-            "        Where-Object -FilterScript { $_.BaseName -notmatch 'installed' } | ForEach-Object -Process {",
-            "    $registry_file = '\"{0}\"' -f $_.FullName",
-            "    Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $registry_file) -WindowStyle Hidden -Wait",
-            "}"
+            "if ($cmd -eq 'uninstall') {",
+            "    Get-ChildItem -Path $dir -Filter 'un*.reg' -File |",
+            "            Where-Object -FilterScript { $_.BaseName -notmatch 'installed' } | ForEach-Object -Process {",
+            "        $registry_file = '\"{0}\"' -f $_.FullName",
+            "        Start-Process -FilePath 'reg.exe' -ArgumentList @('import', $registry_file) -WindowStyle Hidden -Wait",
+            "    }",
+            "}",
+            "unlink_persist_data @{ persist = @('data') } $dir"
         ]
     },
+    "post_uninstall": [
+        "$shortcut_file = Get-AbsolutePath -Path \"$(shortcut_folder $global)\\Visual Studio Code - Insiders.lnk\"",
+        "Write-Output \"`nRemoving shortcut '$(friendly_path $shortcut_file)'...\"",
+        "Remove-Item -LiteralPath $shortcut_file -Force -ErrorAction SilentlyContinue"
+    ],
     "checkver": {
         "url": "https://update.code.visualstudio.com/api/update/win32-x64-archive/insider/latest",
         "script": [
             "$release = $page | ConvertFrom-Json -ErrorAction Stop",
-            "$relative_path = $release.url -replace '.+(?=insider/)', ''",
             "$time = [DateTimeOffset]::FromUnixTimeMilliseconds($release.timestamp)",
-            "Write-Output \"$relative_path, $($time.Year).$($time.DayOfYear).$($time.Hour).$($time.Minute)\""
+            "Write-Output \"$($release.url), $($time.Year).$($time.DayOfYear).$($time.Hour).$($time.Minute)\""
         ],
         "regex": "insider/(?<commit>[^/]+)/VSCode-win32-x64-(?<prefix>[\\d.]+)[^\\d]+(?<suffix>[\\d.]+)",
         "replace": "${prefix}-${suffix}"
