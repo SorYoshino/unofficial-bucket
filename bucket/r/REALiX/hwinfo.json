@@ -28,7 +28,7 @@
             "    $cfg = @('[Settings]', 'AutoUpdate=0', 'AutoUpdateBetaDisable=1')",
             "    Set-Content -Path \"$dir\\$base_name.INI\" -Value $cfg -Encoding ascii",
             "}",
-            "persist_data @{ persist = \"$base_name.INI\" } $original_dir $persist_dir",
+            "persist_data @{ persist = \"$base_name.INI\" } $dir $persist_dir",
             "persist_permission @{ persist = \"$base_name.INI\" } $global"
         ]
     },

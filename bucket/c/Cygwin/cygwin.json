@@ -33,7 +33,7 @@
             "    '--local-package-dir', \"$persist_dir\\packages\", '--root', \"$persist_dir\\root\"",
             ")",
             "Start-Process -FilePath \"$dir\\cygwin-setup.exe\" -ArgumentList $install_args -WindowStyle 'Hidden' -Wait",
-            "persist_data @{ persist = @('root', 'packages') } $original_dir $persist_dir",
+            "persist_data @{ persist = @('root', 'packages') } $dir $persist_dir",
             "persist_permission @{ persist = @('root', 'packages') } $global"
         ]
     },

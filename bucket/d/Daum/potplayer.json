@@ -36,19 +36,20 @@
             ]
         }
     },
-    "pre_install": [
-        "$arch_flag = if ($architecture -eq '64bit') { '64' } else { '' }",
-        "$cfg = @('[Settings]', 'AutoUpdateStart=0', 'CheckAutoUpdate=0', 'AutoDownloadFile=0')",
-        "'PotPlayer', 'PotPlayerMini' | ForEach-Object -Process {",
-        "    $setting_name = \"$_{0}.ini\" -f $arch_flag",
-        "    if (-not (Test-Path -Path \"$persist_dir\\$setting_name\" -PathType Leaf)) {",
-        "        Set-Content -Path \"$dir\\$setting_name\" -Value $cfg -Encoding unicode",
-        "    }",
-        "    persist_data @{ persist = $setting_name } $original_dir $persist_dir",
-        "}"
-    ],
     "installer": {
-        "script": "Expand-7zipArchive -Path \"$dir\\$fname\" -Switches '-xr!$* -xr!*XP* -xr!unins*' -Removal"
+        "script": [
+            "Expand-7zipArchive -Path \"$dir\\$fname\" -Switches '-xr!$* -xr!*XP* -xr!unins*' -Removal",
+            "$arch_flag = if ($architecture -eq '64bit') { '64' } else { '' }",
+            "$cfg = @('[Settings]', 'AutoUpdateStart=0', 'CheckAutoUpdate=0', 'AutoDownloadFile=0')",
+            "'PotPlayer', 'PotPlayerMini' | ForEach-Object -Process {",
+            "    $setting_name = \"$_{0}.ini\" -f $arch_flag",
+            "    if (-not (Test-Path -Path \"$persist_dir\\$setting_name\" -PathType Leaf)) {",
+            "        Set-Content -Path \"$dir\\$setting_name\" -Value $cfg -Encoding unicode",
+            "    }",
+            "    persist_data @{ persist = $setting_name } $dir $persist_dir",
+            "    persist_permission @{ persist = $setting_name } $global",
+            "}"
+        ]
     },
     "post_install": [
         "'Logos', 'Skins', 'Module', 'UrlList', 'IconPack', 'PxShader', 'Extension' | ForEach-Object -Process {",
@@ -73,13 +74,15 @@
         "Extension",
         "Extention"
     ],
-    "pre_uninstall": [
-        "$arch_flag = if ($architecture -eq '64bit') { '64' } else { '' }",
-        "'PotPlayer', 'PotPlayerMini' | ForEach-Object -Process {",
-        "    $setting_name = \"$_{0}.ini\" -f $arch_flag",
-        "    unlink_persist_data @{ persist = $setting_name } $dir",
-        "}"
-    ],
+    "uninstaller": {
+        "script": [
+            "$arch_flag = if ($architecture -eq '64bit') { '64' } else { '' }",
+            "'PotPlayer', 'PotPlayerMini' | ForEach-Object -Process {",
+            "    $setting_name = \"$_{0}.ini\" -f $arch_flag",
+            "    unlink_persist_data @{ persist = $setting_name } $dir",
+            "}"
+        ]
+    },
     "checkver": {
         "url": "https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html",
         "script": [
