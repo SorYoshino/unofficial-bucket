@@ -1,5 +1,5 @@
 {
-    "version": "4.4.2",
+    "version": "4.5.0",
     "description": "A Windows tool that allows you to preview files quickly by pressing the Space key.",
     "homepage": "https://1218.io/seer/",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ccseer/Seer/releases/download/v4.4.2/Seer-4.4.2-portable.7z",
-            "hash": "87cd56ee441e1f799e95ec9ffbeef6e7945e68acb1d06e5f0aa43c7caa9c01ae"
+            "url": "https://github.com/ccseer/Seer/releases/download/v4.5.0/Seer-4.5.0-portable.7z",
+            "hash": "f3d3072c3b11bdf7143c01a1cdef78ae54a2ab7b0aa5bcc611799214fd62ccba"
         }
     },
     "extract_dir": "Seer",
