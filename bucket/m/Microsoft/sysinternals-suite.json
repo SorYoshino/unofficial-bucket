@@ -31,24 +31,26 @@
         "    ) | Select-Object -Skip 1 | Remove-Item -Force -ErrorAction SilentlyContinue",
         "}"
     ],
-    "post_install": [
-        "$metadata_file = Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.jsonc' -File |",
-        "        Select-Object -ExpandProperty FullName -First 1",
-        "$shortcut_map = Get-Content -Path $metadata_file -Encoding utf8 | ConvertFrom-Json -AsHashtable",
-        "$program_name = $shortcut_map.Keys",
-        "Get-ChildItem -Path $original_dir -Filter '*.exe' -File | ForEach-Object -Process {",
-        "    $program_file = $_",
-        "    $clean_name = $program_file.BaseName -replace '(?:[^a-z]x)?\\d{2}a?$', ''",
-        "    Write-Output \"Creating shim for '$clean_name'...\"",
-        "    shim $program_file.FullName $global $clean_name $null",
-        "    $program_name | Where-Object -FilterScript { $program_file.BaseName -match [regex]::Escape($_) } | ForEach-Object -Process {",
-        "        $shortcut_map[$_].Target = $program_file.FullName",
-        "    }",
-        "}",
-        "$program_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($shortcut_map[$_].Target) } | ForEach-Object -Process {",
-        "    startmenu_shortcut $shortcut_map[$_].Target $shortcut_map[$_].ShortcutName '/accepteula' $null $global",
-        "}"
-    ],
+    "installer": {
+        "script": [
+            "$metadata_file = Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.jsonc' -File |",
+            "        Select-Object -ExpandProperty FullName -First 1",
+            "$shortcut_map = Get-Content -Path $metadata_file -Encoding utf8 | ConvertFrom-Json -AsHashtable",
+            "$program_name = $shortcut_map.Keys",
+            "Get-ChildItem -Path $dir -Filter '*.exe' -File | ForEach-Object -Process {",
+            "    $program_file = $_",
+            "    $clean_name = $program_file.BaseName -replace '(?:[^a-z]x)?\\d{2}a?$', ''",
+            "    Write-Output \"Creating shim for '$clean_name'...\"",
+            "    shim $program_file.FullName $global $clean_name $null",
+            "    $program_name | Where-Object -FilterScript { $program_file.BaseName -match [regex]::Escape($_) } | ForEach-Object -Process {",
+            "        $shortcut_map[$_].Target = $program_file.FullName",
+            "    }",
+            "}",
+            "$program_name | Where-Object -FilterScript { -not [string]::IsNullOrWhiteSpace($shortcut_map[$_].Target) } | ForEach-Object -Process {",
+            "    startmenu_shortcut $shortcut_map[$_].Target $shortcut_map[$_].ShortcutName '/accepteula' $null $global",
+            "}"
+        ]
+    },
     "uninstaller": {
         "script": [
             "Get-ChildItem -Path $dir -Filter '*.exe' -File | ForEach-Object -Process {",

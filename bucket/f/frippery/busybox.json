@@ -20,25 +20,39 @@
             "hash": "e67f873d19d58c535cc9f0c4965ffd622e19b7bab87e3da89cb2185fb54464d7"
         }
     },
-    "post_install": [
-        "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-        "    FileName = \"$original_dir\\busybox.exe\"; Arguments = '--list'",
-        "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-        "}",
-        "$process = [System.Diagnostics.Process]::Start($process_info)",
-        "$stdout_response = $process.StandardOutput.ReadToEnd()",
-        "$process.WaitForExit()",
-        "if (-not [string]::IsNullOrWhiteSpace($stdout_response)) {",
-        "    Write-Output \"`nCreating shim for 'busybox'....\"",
-        "    $utility_names = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
-        "    Set-Content -Path \"$original_dir\\utility_names.ini\" -Value $utility_names -Encoding utf8",
-        "    shim \"$original_dir\\busybox.exe\" $global 'busybox' $null",
-        "    $utility_names | ForEach-Object -Process {",
-        "        Write-Output \"Creating shim for '$($_.Trim())'...\"",
-        "        shim \"$original_dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
-        "    }",
-        "} else { abort \"`nShim creation failed: Unable to retrieve utility names from 'busybox --list' output.\" }"
-    ],
+    "installer": {
+        "script": [
+            "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
+            "    FileName = \"$dir\\busybox.exe\"",
+            "    CreateNoWindow = $true; UseShellExecute = $false",
+            "    RedirectStandardError = $true; RedirectStandardOutput = $true",
+            "}",
+            "$process_info.ArgumentList.Add('--list')",
+            "try {",
+            "    $process = [System.Diagnostics.Process]::Start($process_info)",
+            "    $stdout_response = $process.StandardOutput.ReadToEnd()",
+            "    $stderr_response = $process.StandardError.ReadToEnd()",
+            "    $process.WaitForExit()",
+            "    if ($process.ExitCode -ne 0) {",
+            "        throw \"Process terminated unexpectedly with exit code $($process.ExitCode). Stderr: $($stderr_response.Trim())\"",
+            "    }",
+            "} catch {",
+            "    Write-Warning \"Execution failed: $($_.Exception.Message)\" ",
+            "} finally {",
+            "    if ($null -ne $process) { $process.Dispose() }",
+            "}",
+            "if (-not [string]::IsNullOrWhiteSpace($stdout_response)) {",
+            "    Write-Output \"`nCreating shim for 'busybox'....\"",
+            "    $utility_names = $stdout_response -split \"`r?`n\" | Where-Object -FilterScript { $_ -notmatch '^([\\s[]|$)' }",
+            "    Set-Content -Path \"$dir\\utility_names.ini\" -Value $utility_names -Encoding utf8",
+            "    shim \"$dir\\busybox.exe\" $global 'busybox' $null",
+            "    $utility_names | ForEach-Object -Process {",
+            "        Write-Output \"Creating shim for '$($_.Trim())'...\"",
+            "        shim \"$dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
+            "    }",
+            "} else { abort \"`nShim creation failed: Unable to retrieve utility names from 'busybox --list' output.\" }"
+        ]
+    },
     "uninstaller": {
         "script": [
             "rm_shim 'busybox' $(shimdir $global) $app",

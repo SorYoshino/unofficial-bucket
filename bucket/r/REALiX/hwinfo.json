@@ -26,18 +26,15 @@
             "$base_name = Get-ChildItem -Path $dir -Filter '*.exe' -File | Select-Object -ExpandProperty BaseName -First 1",
             "if (-not (Test-Path -Path \"$persist_dir\\$base_name.INI\" -PathType Leaf)) {",
             "    $cfg = @('[Settings]', 'AutoUpdate=0', 'AutoUpdateBetaDisable=1')",
-            "    Set-Content -Path \"$dir\\$base_name.INI\" -Value $cfg -Encoding ascii",
+            "    Set-Content -Path \"$dir\\$base_name.INI\" -Value $cfg -Encoding utf8NoBOM",
             "}",
+            "Write-Output \"`nCreating shim for 'HWiNFO'...\"",
+            "shim \"$dir\\$base_name.exe\" $global 'HWiNFO' $null",
+            "startmenu_shortcut \"$dir\\$base_name.exe\" 'HWiNFO' $null $null $global",
             "persist_data @{ persist = \"$base_name.INI\" } $dir $persist_dir",
             "persist_permission @{ persist = \"$base_name.INI\" } $global"
         ]
     },
-    "post_install": [
-        "$program_file = Get-ChildItem -Path $original_dir -Filter '*.exe' -File | Select-Object -ExpandProperty FullName -First 1",
-        "Write-Output \"`nCreating shim for 'HWiNFO'...\"",
-        "shim $program_file $global 'HWiNFO' $null",
-        "startmenu_shortcut $program_file 'HWiNFO' $null $null $global"
-    ],
     "pre_uninstall": "Get-ChildItem -Path $dir -Filter '*64_KEY.txt' -File | Copy-Item -Destination $persist_dir -Force",
     "uninstaller": {
         "script": [
