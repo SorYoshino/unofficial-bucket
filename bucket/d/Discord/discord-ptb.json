@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1205",
+    "version": "1.0.1206",
     "description": "A voice, video, and text communication platform, offering early access to the newest features via the Public Test Build (PTB) prior to their general release.",
     "homepage": "https://discord.com",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/x64/1.0.1205/DiscordPTBSetup.exe#/DiscordPTB-1.0.1205-x86_64-Setup.exe",
-            "hash": "e759864a312bd1cf6d7179632b35696cfa8583a50e9d4c5772b6ba5add48106a"
+            "url": "https://ptb.dl2.discordapp.net/distro/app/ptb/win/x64/1.0.1206/DiscordPTBSetup.exe#/DiscordPTB-1.0.1206-x86_64-Setup.exe",
+            "hash": "1428d2b9ef8cb7da67fa1655ee51fb59730eb28e7e909e5d87b0988a03537716"
         }
     },
     "installer": {
