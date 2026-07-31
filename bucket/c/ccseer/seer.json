@@ -9,7 +9,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/ccseer/Seer/releases/download/v4.5.0/Seer-4.5.0-portable.7z",
-            "hash": "f3d3072c3b11bdf7143c01a1cdef78ae54a2ab7b0aa5bcc611799214fd62ccba"
+            "hash": "1dde0faa03e8c8cb8a82514b76fe03fc027976692c9b23176524034c2b9243cf"
         }
     },
     "extract_dir": "Seer",

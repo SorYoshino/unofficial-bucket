@@ -8,7 +8,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/260622/PotPlayerSetup64.exe#/PotPlayer-26.07.01.0-x86_64-Setup.exe",
+            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/260622/PotPlayerSetup64.exe#/PotPlayer-26.07.01.0-x86_64-Setup.exe",
             "hash": "7e70de32cfb6b3f9e02ba95e74ed782d3927a5a0b5f8bb2ac744e623a903621a",
             "shortcuts": [
                 [
@@ -22,7 +22,7 @@
             ]
         },
         "32bit": {
-            "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/260622/PotPlayerSetup.exe#/PotPlayer-26.07.01.0-i686-Setup.exe",
+            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/260622/PotPlayerSetup.exe#/PotPlayer-26.07.01.0-i686-Setup.exe",
             "hash": "b7f0dbbab64d1d95c16a07711a14cb006bb70f8a02e7d0d875312c40fbdd6144",
             "shortcuts": [
                 [
@@ -84,14 +84,15 @@
         ]
     },
     "checkver": {
-        "url": "https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html",
+        "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html",
         "script": [
             "if ($page -match '\\[(?<tag>\\d+)\\]') {",
-            "    $download_url = 'https://t1.daumcdn.net/potplayer/PotPlayer/Version/{0}/PotPlayerSetup64.exe' -f $Matches['tag']",
+            "    $download_url = 'https://t1.kakaocdn.net/potplayer/PotPlayer/Version/{0}/PotPlayerSetup64.exe' -f $Matches['tag']",
             "    $download_path = cache_path $app 'unknown' $download_url",
             "    Invoke-WebRequest -Uri $download_url -OutFile $download_path -UseBasicParsing",
             "    $version_info = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($download_path)",
-            "    Move-Item -Path $download_path -Destination (cache_path $app $version_info.FileVersion $download_url) -Force",
+            "    $final_download_url = '{0}#/PotPlayer-{1}-x86_64-Setup.exe' -f $download_url, $version_info.FileVersion",
+            "    Move-Item -Path $download_path -Destination (cache_path $app $version_info.FileVersion $final_download_url) -Force",
             "    Write-Output \"$($version_info.FileVersion), $($Matches['tag'])\"",
             "}"
         ],
@@ -100,10 +101,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/$matchTag/PotPlayerSetup64.exe#/PotPlayer-$version-x86_64-Setup.exe"
+                "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/$matchTag/PotPlayerSetup64.exe#/PotPlayer-$version-x86_64-Setup.exe"
             },
             "32bit": {
-                "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/$matchTag/PotPlayerSetup.exe#/PotPlayer-$version-i686-Setup.exe"
+                "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/$matchTag/PotPlayerSetup.exe#/PotPlayer-$version-i686-Setup.exe"
             }
         }
     }
