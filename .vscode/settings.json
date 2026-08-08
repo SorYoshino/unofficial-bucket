@@ -1,17 +1,26 @@
-// Configure PSScriptAnalyzer settings
 {
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/tmp": true
+    },
     "[powershell]": {
         "editor.formatOnSave": true
     },
     // -----------------------------------------------  BEGIN: ms-vscode.powershell - Configuration  ------------------------------------------------
-    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
-    // ---------------------------------------  BEGIN: ms-vscode.powershell - Interface Configuration  ----------------------------------------
+    // ----------------------------------------  BEGIN: ms-vscode.powershell - Interface Configuration  ----------------------------------------
     // -----------------------------------------------------  Editor Assistance  ------------------------------------------------------
     "powershell.enableReferencesCodeLens": true,
     "powershell.codeFolding.enable": true,
     "powershell.codeFolding.showLastLine": true,
     "powershell.helpCompletion": "BlockComment",
-    // ----------------------------------------  END: ms-vscode.powershell - Interface Configuration  -----------------------------------------
+    "powershell.rename.createParameterAlias": true,
+    "powershell.rename.acceptDisclaimer": false,
+    // -----------------------------------------  END: ms-vscode.powershell - Interface Configuration  -----------------------------------------
     // ----------------------------------------  BEGIN: ms-vscode.powershell - Formatting Configuration  ---------------------------------------
     // ---------------------------------------------------  Spacing and Formatting  ---------------------------------------------------
     "powershell.codeFormatting.whitespaceAroundOperator": true,
@@ -34,8 +43,17 @@
     "powershell.codeFormatting.useCorrectCasing": true,
     "powershell.codeFormatting.useConstantStrings": true,
     "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+    "powershell.codeFormatting.alignEnumMemberValues": false,
     "powershell.codeFormatting.alignPropertyValuePairs": false,
     // -----------------------------------------  END: ms-vscode.powershell - Formatting Configuration  ----------------------------------------
+    // -------------------------------------  BEGIN: ms-vscode.powershell - Pester Testing Configuration  --------------------------------------
+    // -------------------------------------------------  CodeLens & UI Integration  --------------------------------------------------
+    "powershell.pester.codeLens": true,
+    "powershell.pester.useLegacyCodeLens": false,
+    // ---------------------------------------------------  Output Verbosity Logs  ----------------------------------------------------
+    "powershell.pester.outputVerbosity": "FromPreference",
+    "powershell.pester.debugOutputVerbosity": "Diagnostic",
+    // --------------------------------------  END: ms-vscode.powershell - Pester Testing Configuration  ---------------------------------------
     // ------------------------------------------------  END: ms-vscode.powershell - Configuration  -------------------------------------------------
     "json.schemas": [
         {
@@ -44,14 +62,5 @@
                 "bucket/**/*.json"
             ]
         }
-    ],
-    "files.insertFinalNewline": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/tmp": true
-    }
+    ]
 }
