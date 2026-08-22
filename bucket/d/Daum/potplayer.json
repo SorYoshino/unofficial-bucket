@@ -9,7 +9,7 @@
     "architecture": {
         "64bit": {
             "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/260819/PotPlayerSetup64.exe#/PotPlayer-26.08.19.0-x86_64-Setup.exe",
-            "hash": "987ef86d0e644e047781b62abbbe6f977f6b14dd54c2bd50930409da634dec46",
+            "hash": "969390a15ddbab797fb5a945acd39f16ef639e92ed494b7ef5fbfcc6e155b023",
             "shortcuts": [
                 [
                     "PotPlayer64.exe",
@@ -23,7 +23,7 @@
         },
         "32bit": {
             "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/260819/PotPlayerSetup.exe#/PotPlayer-26.08.19.0-i686-Setup.exe",
-            "hash": "7a4182de610e4c3aca96c53b2ac222c7c637abc71a5b0f5aaa62cf241312d008",
+            "hash": "e3a9d11e41d09cb407145256d7816689b9a50062e0e43b336d7212cedf4d785c",
             "shortcuts": [
                 [
                     "PotPlayer.exe",
