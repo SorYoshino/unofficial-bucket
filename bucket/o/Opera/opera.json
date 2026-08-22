@@ -53,8 +53,9 @@
             "        Sort-Object -Property $version_sort -Descending | ForEach-Object -MemberName href",
             "foreach ($path_segment in $path_segments.TrimEnd('/')) {",
             "    $release_url = 'https://get.geo.opera.com/pub/opera/desktop/{0}/win/' -f $path_segment",
-            "    $download_page = Invoke-WebRequest -Uri $release_url -UseBasicParsing -ErrorAction Stop",
-            "    $installer_name = $download_page.Links | Where-Object -FilterScript { $_.href -match '(?<=Setup\\w+)\\.exe$' } |",
+            "    $response = Invoke-WebRequest -Uri $release_url -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop",
+            "    if ($null -eq $response -or $response.StatusCode -ne 200) { continue }",
+            "    $installer_name = $response.Links | Where-Object -FilterScript { $_.href -match '(?<=Setup\\w+)\\.exe$' } |",
             "            Select-Object -ExpandProperty href -First 1",
             "    if (-not [string]::IsNullOrWhiteSpace($installer_name)) { Write-Output $installer_name; break }",
             "}"

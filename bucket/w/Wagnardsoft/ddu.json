@@ -56,9 +56,10 @@
         "script": [
             "if ($page -match 'href=\"(?<string>[^\"]+)\">Download[^\\d]+(?<version>[\\d.]+)<') {",
             "    $version = $Matches['version']",
+            "    $url_regex = 'href=\"(?<url>[^\"]+)\".+?DOWNLOAD &amp; SUPPORT'",
             "    $release_url = 'https://www.wagnardsoft.com/{0}' -f $Matches['string'].TrimStart('/')",
-            "    $release_page = Invoke-WebRequest -Uri $release_url -UseBasicParsing -ErrorAction Stop",
-            "    if ($release_page.Content -match 'href=\"(?<url>[^\"]+)\".+?DOWNLOAD &amp; SUPPORT') {",
+            "    $response = Invoke-WebRequest -Uri $release_url -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop",
+            "    if ($null -ne $response -and $response.StatusCode -eq 200 -and $response.Content -match $url_regex) {",
             "        Write-Output \"$($Matches['url']), $version\"",
             "    }",
             "}"

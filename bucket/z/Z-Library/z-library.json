@@ -28,7 +28,8 @@
             "$download_path = cache_path $app 'unknown' $download_url",
             "Invoke-WebRequest -Uri $download_url -OutFile $download_path -UseBasicParsing",
             "$version_info = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($download_path)",
-            "Move-Item -Path $download_path -Destination (cache_path $app $version_info.ProductVersion $download_url) -Force",
+            "$final_download_url = '{0}#/Z-Library-{1}-x86_64-Setup.exe' -f $download_url, $version_info.FileVersion",
+            "Move-Item -Path $download_path -Destination (cache_path $app $version_info.ProductVersion $final_download_url) -Force",
             "Write-Output $version_info.ProductVersion"
         ],
         "regex": "([\\d.]+)"

@@ -40,9 +40,6 @@
             "arm64": {
                 "url": "https://github.com/srwi/EverythingToolbar/releases/download/$version/EverythingToolbar-$version-arm64.exe"
             }
-        },
-        "hash": {
-            "url": "$urlNoExt.sha256"
         }
     }
 }

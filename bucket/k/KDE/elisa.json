@@ -29,8 +29,9 @@
             "        Sort-Object -Property $version_sort -Descending | ForEach-Object -MemberName href",
             "foreach ($path_segment in $path_segments.TrimEnd('/')) {",
             "    $release_url = 'https://cdn.kde.org/ci-builds/{1}/{0}/{2}/windows/' -f $app, $app_type, $path_segment",
-            "    $download_page = Invoke-WebRequest -Uri $release_url -UseBasicParsing -ErrorAction Stop",
-            "    $archive_name = $download_page.Links | Where-Object -FilterScript { $_.href -match '\\.7z$' } |",
+            "    $response = Invoke-WebRequest -Uri $release_url -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop",
+            "    if ($null -eq $response -or $response.StatusCode -ne 200) { continue }",
+            "    $archive_name = $response.Links | Where-Object -FilterScript { $_.href -match '\\.7z$' } |",
             "            Select-Object -ExpandProperty href -First 1",
             "    if (-not [string]::IsNullOrWhiteSpace($archive_name)) { Write-Output $archive_name; break }",
             "}"
