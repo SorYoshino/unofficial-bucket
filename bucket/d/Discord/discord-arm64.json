@@ -1,5 +1,5 @@
 {
-    "version": "1.0.46",
+    "version": "1.0.47",
     "description": "A voice, video, and text communication platform for ARM64.",
     "homepage": "https://discord.com",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://stable.dl2.discordapp.net/distro/app/stable/win/arm64/1.0.46/DiscordSetup.exe#/Discord-1.0.46-aarch64-Setup.exe",
-            "hash": "54f254ae769e86003f3e685e30d8eba0ae10d37000bfd90ae4622020cb4fe725"
+            "url": "https://stable.dl2.discordapp.net/distro/app/stable/win/arm64/1.0.47/DiscordSetup.exe#/Discord-1.0.47-aarch64-Setup.exe",
+            "hash": "f1a5d63431dcd61e8eaed8312eadf2104cfab45e7586e8bceab69c6acbb5911e"
         }
     },
     "installer": {
