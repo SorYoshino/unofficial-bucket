@@ -1,12 +1,12 @@
 {
-    "version": "1.0.9.3",
+    "version": "1.0.9.4",
     "description": "Wagnardsoft Tools (WTools) is a free system optimization utility for cleaning, repairing, and maintaining Windows, featuring system cleanup, component repair, system management, performance optimization, and more.",
     "homepage": "https://www.wagnardsoft.com/wtools",
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://download.wagnardsoft.com/WTools/WTools%20v1.0.9.3.exe#/WTools-1.0.9.3-x86_64-Portable.exe",
-            "hash": "16c504833a22be5acf0be3f5d708cbad9b15edff7e96527242b46d545297b25d"
+            "url": "https://download.wagnardsoft.com/WTools/WTools%20v1.0.9.4.exe#/WTools-1.0.9.4-x86_64-Portable.exe",
+            "hash": "ecb311675a69bd6dc5eae3aa3941d271d4e2208575a96d16b79d036734d84f42"
         }
     },
     "pre_install": [
