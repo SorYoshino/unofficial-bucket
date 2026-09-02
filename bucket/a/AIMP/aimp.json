@@ -1,5 +1,5 @@
 {
-    "version": "5.40.2725",
+    "version": "5.40.2726",
     "description": "A freeware audio player.",
     "homepage": "https://www.aimp.ru",
     "license": {
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://aimp.ru/?do=download.file&id=31#/aimp-5.40.2725-x86_64-windows.7z",
-            "hash": "c6bd400831d4e4d53868e50f54cd8c368f6a5a6071d1570a457ce1674df54647"
+            "url": "https://aimp.ru/?do=download.file&id=31#/aimp-5.40.2726-x86_64-windows.7z",
+            "hash": "a53fe1fba2f0a244509203d1e68d2709fedddb88e602fad2eb64756b205523ed"
         },
         "32bit": {
-            "url": "https://aimp.ru/?do=download.file&id=8#/aimp-5.40.2725-i686-windows.7z",
-            "hash": "a8ecfa6dd63c8160dc3ac386380a8ff469f9913b1344660bfc97a51db92ce819"
+            "url": "https://aimp.ru/?do=download.file&id=8#/aimp-5.40.2726-i686-windows.7z",
+            "hash": "6f129a74f351ec40ab8bc69b1db6c67e4722f22c306d3bc849645e564f724b15"
         }
     },
     "extract_dir": "AIMP",
