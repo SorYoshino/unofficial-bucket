@@ -10,7 +10,7 @@
         "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
     },
     "url": "https://github.com/pritunl/pritunl-client/releases/download/1.4.4744.47/Pritunl.exe#/Pritunl-Client_1.4.4744.47_universal_Setup.exe",
-    "hash": "sha512:a1def29eb799ae7b71aa47ac2ecddbeb668e9cf3897936cd041018a790d08552d8f16fee1172429c4b87ce038f7778fda5fc05a101ad082c32bef91fe2526138",
+    "hash": "sha512:36bd13cef475062d24e6c7c332beb1bc4c74522aaf54b2c656160d1493db22bb8ac27d5d7def5265d403b6ebcee1efb40216ecb953ee26a0641d284ea63fb94c",
     "innosetup": true,
     "architecture": {
         "64bit": {
