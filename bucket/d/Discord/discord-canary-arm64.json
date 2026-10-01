@@ -1,5 +1,5 @@
 {
-    "version": "1.0.531",
+    "version": "1.0.532",
     "description": "A voice, video, and text communication platform for ARM64, serving as the bleeding-edge testing environment for the latest features and architectural updates.",
     "homepage": "https://discord.com",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/arm64/1.0.531/DiscordCanarySetup.exe#/DiscordCanary-1.0.531-aarch64-Setup.exe",
-            "hash": "571b240e711e3a32242153f7acf8b63b88bfebf561eaf97b932581b2b4a451d7"
+            "url": "https://canary.dl2.discordapp.net/distro/app/canary/win/arm64/1.0.532/DiscordCanarySetup.exe#/DiscordCanary-1.0.532-aarch64-Setup.exe",
+            "hash": "540c21ce736db8a89537da5d1da2087e369c500ccb791abe2d0ad55fdc695b2a"
         }
     },
     "installer": {
