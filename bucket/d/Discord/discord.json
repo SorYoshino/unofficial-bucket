@@ -1,5 +1,5 @@
 {
-    "version": "1.0.9260",
+    "version": "1.0.9261",
     "description": "A voice, video and text communication platform.",
     "homepage": "https://discord.com",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://stable.dl2.discordapp.net/distro/app/stable/win/x64/1.0.9260/DiscordSetup.exe#/Discord-1.0.9260-x86_64-Setup.exe",
-            "hash": "be1dee4c52227f743bc277a33a47620b6ff119e1387fe899205a8fe5d6575a90"
+            "url": "https://stable.dl2.discordapp.net/distro/app/stable/win/x64/1.0.9261/DiscordSetup.exe#/Discord-1.0.9261-x86_64-Setup.exe",
+            "hash": "e6d2f3f781904b6f336a2aa22699d1c97cecab3784509804e870ac4cb69f2ac2"
         }
     },
     "installer": {
