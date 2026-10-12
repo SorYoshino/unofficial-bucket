@@ -1,5 +1,5 @@
 {
-    "version": "1.4.4752.50",
+    "version": "1.4.4777.90",
     "description": "A free and open source cross platform OpenVPN client.",
     "homepage": "https://client.pritunl.com",
     "license": {
@@ -9,8 +9,8 @@
     "suggest": {
         "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
     },
-    "url": "https://github.com/pritunl/pritunl-client/releases/download/1.4.4752.50/Pritunl.exe#/Pritunl-Client_1.4.4752.50_universal_Setup.exe",
-    "hash": "sha512:b78b8493e4f28ed7b0936835f3dfe401c07e3cb05bb642b59e629efba5a33275b6c50e2ccb145c4d855e22e48db087093c9c4f1dca8b80e1bba19385f86a53f6",
+    "url": "https://github.com/pritunl/pritunl-client/releases/download/1.4.4777.90/Pritunl.exe#/Pritunl-Client_1.4.4777.90_universal_Setup.exe",
+    "hash": "sha512:a1828212b6017ada8e9effb0ffd8055e176619d3f5bc39e2db3bf6947b4a1bccb4d96c6ac0e9e2d4e15f4f70b1a08c900399eab67220e2cfb535f1cb130ec2b5",
     "innosetup": true,
     "architecture": {
         "64bit": {
