@@ -1,5 +1,5 @@
 {
-    "version": "26.08-6789",
+    "version": "26.08-6794",
     "description": "A cross-platform utility that enables communication and data transfer over local networks, supporting file exchange, clipboard sharing, notification synchronization, remote interaction, and other related capabilities.",
     "homepage": "https://kdeconnect.kde.org",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/release-26.08/windows/kdeconnect-kde-release_26.08-6789-windows-cl-msvc2022-x86_64.7z",
-            "hash": "188706e97d8aa867fce1050d0e1e45493afb19c7fbc3831a37b0ba7b2b8631e5"
+            "url": "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/release-26.08/windows/kdeconnect-kde-release_26.08-6794-windows-cl-msvc2022-x86_64.7z",
+            "hash": "d864fd2fadcbf8603f8d9a66d6ddbdd7eaa4ac68a841b7458a81cd6f43e59967"
         }
     },
     "bin": "bin\\kdeconnect-cli.exe",
