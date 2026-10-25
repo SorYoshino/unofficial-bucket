@@ -10,13 +10,13 @@ Windows Registry Editor Version 5.00
 "FriendlyTypeName"="PDF Document"
 
 [HKEY_CURRENT_USER\Software\Classes\PdfGear.App.1\DefaultIcon]
-@="\"{{pdfgear_dir}}\\PDFLauncher.exe\",0"
+@="\"{{pdfgear_dir}}\\PDFgear.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\PdfGear.App.1\shell]
 
 [HKEY_CURRENT_USER\Software\Classes\PdfGear.App.1\shell\open]
 "FriendlyAppName"="PDFgear"
-"Icon"="\"{{pdfgear_dir}}\\PDFLauncher.exe\",0"
+"Icon"="\"{{pdfgear_dir}}\\PDFgear.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\PdfGear.App.1\shell\open\command]
-@="\"{{pdfgear_dir}}\\PDFLauncher.exe\" \"%1\""
+@="\"{{pdfgear_dir}}\\PDFgear.exe\" \"%1\""
