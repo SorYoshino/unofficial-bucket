@@ -6,7 +6,7 @@
     "architecture": {
         "64bit": {
             "url": "https://s3proxy-alp.cdn-zlib.sk/swfs_second_public_files/soft/desktop/Z-Library-latest.exe#/Z-Library-3.2.1-x86_64-Setup.exe",
-            "hash": "5fbd0105e79a6da46afd3a11dafa961aa2b1c493df769fa39abd8140151aef9f"
+            "hash": "5f3ff581bef8733a97c16ec51fcd8965452124d7691a47608b44db1645327c1b"
         }
     },
     "installer": {
