@@ -1,5 +1,5 @@
 {
-    "version": "26.08-13771",
+    "version": "26.08-13979",
     "description": "A professional video editor supporting multiple formats, advanced editing, effects, audio post-production, and flexible rendering options.",
     "homepage": "https://kdenlive.org",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/release-26.08/windows/kdenlive-release_26.08-13771-windows-gcc-x86_64.7z",
-            "hash": "2514c6e0b961d9189f3232bf8bd44f81aeabdda589dd73dac41956826a9bc98f"
+            "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/release-26.08/windows/kdenlive-release_26.08-13979-windows-mingw-x86_64.7z",
+            "hash": "f30a97033b00b2692f1ddd417c13fe00a66df9e32d58598963fcf2c8b97759b9"
         }
     },
     "bin": "bin\\kdenlive.exe",
@@ -36,12 +36,12 @@
             "    if (-not [string]::IsNullOrWhiteSpace($archive_name)) { Write-Output $archive_name; break }",
             "}"
         ],
-        "regex": "kdenlive-release_([\\d.-]+)-windows-gcc-x86_64\\.7z"
+        "regex": "kdenlive-release_([\\d.-]+)-windows-(?<toolchain>[\\w-]+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/release-$matchHead/windows/kdenlive-release_$version-windows-gcc-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/release-$matchHead/windows/kdenlive-release_$version-windows-$matchToolchain-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }

@@ -23,7 +23,7 @@
     "persist": "noMeiryoUI.ini",
     "checkver": {
         "github": "https://api.github.com/repos/Tatsu-syo/noMeiryoUI/releases/latest",
-        "regex": "(?i)tag/TAG-([\\d.]+)(?=\")"
+        "regex": "^(?i)TAG-([\\d.]+)$"
     },
     "autoupdate": {
         "url": "https://github.com/Tatsu-syo/noMeiryoUI/releases/download/TAG-$version/noMeiryoUI$version.zip"

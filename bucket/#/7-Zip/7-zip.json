@@ -92,8 +92,7 @@
         ]
     },
     "checkver": {
-        "github": "https://api.github.com/repos/ip7z/7zip/releases/latest",
-        "regex": "(?i)tag/([\\d.]+)(?=\")"
+        "github": "https://api.github.com/repos/ip7z/7zip/releases/latest"
     },
     "autoupdate": {
         "architecture": {

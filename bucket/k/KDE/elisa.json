@@ -36,12 +36,12 @@
             "    if (-not [string]::IsNullOrWhiteSpace($archive_name)) { Write-Output $archive_name; break }",
             "}"
         ],
-        "regex": "elisa-release_([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+        "regex": "elisa-release_([\\d.-]+)-windows-(?<toolchain>[\\w-]+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.kde.org/ci-builds/multimedia/elisa/release-$matchHead/windows/elisa-release_$version-windows-cl-$matchLib-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/multimedia/elisa/release-$matchHead/windows/elisa-release_$version-windows-$matchToolchain-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }

@@ -33,12 +33,12 @@
             "    if (-not [string]::IsNullOrWhiteSpace($archive_name)) { Write-Output $archive_name; break }",
             "}"
         ],
-        "regex": "filelight-release_([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+        "regex": "filelight-release_([\\d.-]+)-windows-(?<toolchain>[\\w-]+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.kde.org/ci-builds/utilities/filelight/release-$matchHead/windows/filelight-release_$version-windows-cl-$matchLib-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/utilities/filelight/release-$matchHead/windows/filelight-release_$version-windows-$matchToolchain-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }

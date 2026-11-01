@@ -1,5 +1,5 @@
 {
-    "version": "26.10.21.0",
+    "version": "26.10.21.0-1.7.23159.0",
     "description": "A versatile multimedia player offering robust playback capabilities with broad support for numerous video codecs and formats.",
     "homepage": "https://potplayer.tv",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/261021/PotPlayerSetup64.exe#/PotPlayer-26.10.21.0-x86_64-Setup.exe",
-            "hash": "28890593ea6b1156ca93cd79622fce4e8c1740bfdbe6ee907e3190ec7c3f51d3",
+            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/261021/PotPlayerSetup64.exe#/PotPlayer-26.10.21.0-1.7.23159.0-x86_64-Setup.exe",
+            "hash": "89d42bec6a2ec5a25fb339c0418eac1430ffe3b941718917b6886ac8fd92b49e",
             "shortcuts": [
                 [
                     "PotPlayer64.exe",
@@ -22,8 +22,8 @@
             ]
         },
         "32bit": {
-            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/261021/PotPlayerSetup.exe#/PotPlayer-26.10.21.0-i686-Setup.exe",
-            "hash": "258bc634505bad1409fe43566bb70d7a268dfed8a613348a21f2e07a9f5dc904",
+            "url": "https://t1.kakaocdn.net/potplayer/PotPlayer/Version/261021/PotPlayerSetup.exe#/PotPlayer-26.10.21.0-1.7.23159.0-i686-Setup.exe",
+            "hash": "8d3dc7e942455e4730c614a23711265097fe8e802864824d692a08aabaf8e8d3",
             "shortcuts": [
                 [
                     "PotPlayer.exe",
@@ -91,12 +91,13 @@
             "    $download_path = cache_path $app 'unknown' $download_url",
             "    Invoke-WebRequest -Uri $download_url -OutFile $download_path -UseBasicParsing",
             "    $version_info = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($download_path)",
-            "    $final_download_url = '{0}#/PotPlayer-{1}-x86_64-Setup.exe' -f $download_url, $version_info.FileVersion",
-            "    Move-Item -Path $download_path -Destination (cache_path $app $version_info.FileVersion $final_download_url) -Force",
-            "    Write-Output \"$($version_info.FileVersion), $($Matches['tag'])\"",
+            "    $latest_version = '{0}-{1}' -f $version_info.FileVersion, $version_info.ProductVersion",
+            "    $final_download_url = '{0}#/PotPlayer-{1}-x86_64-Setup.exe' -f $download_url, $latest_version",
+            "    Move-Item -Path $download_path -Destination (cache_path $app $latest_version $final_download_url) -Force",
+            "    Write-Output \"$latest_version, $($Matches['tag'])\"",
             "}"
         ],
-        "regex": "([\\d.]+), (?<tag>\\d+)"
+        "regex": "([\\d.-]+), (?<tag>\\d+)"
     },
     "autoupdate": {
         "architecture": {
