@@ -27,7 +27,7 @@
     ],
     "bin": [
         "PDFgear.exe",
-        "pdfeditor.exe",
+        "PDFLauncher.exe",
         "pdfconverter.exe"
     ],
     "shortcuts": [
