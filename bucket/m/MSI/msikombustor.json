@@ -5,7 +5,7 @@
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://gpuscore.top/msi/MSI_Kombustor4_Setup_v4.1.37_x64.exe",
+            "url": "https://gpuscore.top/msi/MSI_Kombustor4_Setup_v4.1.37_x64.exe#/MSI_Kombustor-4.1.37-x86_64-Setup.exe",
             "hash": "2b443eebd138673dc61d6c1d96ad68b3e6c336e1d506ec648d894660ffea1d07"
         }
     },
@@ -38,12 +38,12 @@
             "    Write-Output \"$release_url, $package_name\"",
             "}"
         ],
-        "regex": "get/(?<tag>\\d+), MSI_Kombustor4_Setup_v([\\d.]+)"
+        "regex": "get/(?<tag>\\d+), (?<name>[^\\s]+Setup_v([\\d.]+)(?<!\\.).+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gpuscore.top/msi/MSI_Kombustor4_Setup_v$version_x64.exe",
+                "url": "https://gpuscore.top/msi/$matchName#/MSI_Kombustor-$version-x86_64-Setup.exe",
                 "hash": {
                     "url": "https://geeks3d.com/dl/show/$matchTag",
                     "regex": "(?i)sha256.+?$sha256<"

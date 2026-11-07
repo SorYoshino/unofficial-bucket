@@ -12,7 +12,7 @@
             "hash": "e7f49d1f4477e416b3051636dc44929b20ae025b46a1ee4cd8c1f1e869af6ae6"
         },
         "32bit": {
-            "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip#/SysinternalsSuite-2026.11.05-i686.7z",
+            "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip#/SysinternalsSuite-2026.11.05-x86_64.7z",
             "hash": "e7f49d1f4477e416b3051636dc44929b20ae025b46a1ee4cd8c1f1e869af6ae6"
         },
         "arm64": {
@@ -75,7 +75,7 @@
                 "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip#/SysinternalsSuite-$version-x86_64.7z"
             },
             "32bit": {
-                "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip#/SysinternalsSuite-$version-i686.7z"
+                "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip#/SysinternalsSuite-$version-x86_64.7z"
             },
             "arm64": {
                 "url": "https://download.sysinternals.com/files/SysinternalsSuite-ARM64.zip#/SysinternalsSuite-$version-aarch64.7z"
