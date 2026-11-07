@@ -1,12 +1,12 @@
 {
-    "version": "3.3.0",
+    "version": "3.3.1",
     "description": "A shadow library project for file-sharing access to scholarly journal articles, academic texts and general-interest books.",
     "homepage": "https://z-lib.sk",
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://s3proxy-alp.cdn-zlib.sk/swfs_second_public_files/soft/desktop/Z-Library-latest.exe#/Z-Library-3.3.0-x86_64-Setup.exe",
-            "hash": "47ae8686a3f1eb4123ae63c31c0599b12482cd42cb3b9a75363fc2fd162804e4"
+            "url": "https://s3proxy-alp.cdn-zlib.sk/swfs_second_public_files/soft/desktop/Z-Library-latest.exe#/Z-Library-3.3.1-x86_64-Setup.exe",
+            "hash": "0b332d915a44fcee5ae9650f6fa10abe7bcfe9e620fdd81de1d673e75f5911a1"
         }
     },
     "installer": {
