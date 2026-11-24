@@ -1,5 +1,5 @@
 {
-    "version": "0.4.11",
+    "version": "3.0.0",
     "description": "A cloud-based music player built on NetEase Player, offering a refined and elegant user interface.",
     "homepage": "https://music.qier222.com",
     "license": {
@@ -11,8 +11,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/YesPlayMusic-Setup-0.4.11.exe",
-            "hash": "sha512:31c670ab8bdd9f1a5edd856ceffe1e8cdfd415ed6a40612987849ba23f0a9fa286b8bed7b4e78cd36e0b310af42147cd3804f8325fb4c178400df2efc8f1ad61"
+            "url": "https://github.com/qier222/YesPlayMusic/releases/download/v3.0.0/YesPlayMusic-3.0.0-windows-x64-setup.exe",
+            "hash": "3c4bdca0983b4e723fb29f41fdc555597da0182ede8d9a6c2ab0eb88cf94ea08"
         }
     },
     "installer": {
